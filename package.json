@@ -1,0 +1,23 @@
+{
+  "name": "gym-auto",
+  "version": "0.0.1",
+  "description": "A system for the automation of proccesses in a modern gym",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Gebov/gym-auto.git"
+  },
+  "author": "gebov",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Gebov/gym-auto/issues"
+  },
+  "homepage": "https://github.com/Gebov/gym-auto#readme",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "typescript": "^2.0.6"
+  }
+}
