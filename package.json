@@ -17,7 +17,10 @@
   },
   "homepage": "https://github.com/Gebov/gym-auto#readme",
   "devDependencies": {
+    "@types/core-js": "^0.9.34",
     "gulp": "^3.9.1",
+    "gulp-cli": "^1.2.2",
+    "gulp-typescript": "^3.1.2",
     "typescript": "^2.0.6",
     "webpack": "^1.13.3",
     "webpack-dev-server": "^1.16.2"

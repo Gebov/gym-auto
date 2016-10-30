@@ -1,4 +1,7 @@
 {
+  "files": [
+    "src/app/*.ts"
+  ],
   "compilerOptions": {
     "target": "es5",
     "module": "commonjs",
