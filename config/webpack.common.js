@@ -20,10 +20,10 @@ module.exports = {
         test: /\.ts$/,
         loaders: ['ts-loader']
       },
-      // {
-      //   test: /\.html$/,
-      //   loader: 'html'
-      // },
+      {
+        test: /\.html$/,
+        loader: 'html'
+      },
     //   {
     //     test: /\.(png|jpe?g|gif|svg|woff|woff2|ttf|eot|ico)$/,
     //     loader: 'file?name=assets/[name].[hash].[ext]'
