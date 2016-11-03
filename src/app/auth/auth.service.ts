@@ -1,18 +1,29 @@
 import { Injectable } from '@angular/core';
 import { Observable, Observer } from 'rxjs';
-import { IUser } from './user.interface';
+import { IUser } from './user';
 
 @Injectable()
 export class AuthService {
+    private isLoggedInField: boolean = false;
+
     public isLoggedIn(): boolean {
-        return true;
+        return this.isLoggedInField;
     }
 
     public login(user: IUser) : Observable<boolean> {
-        if (user.email === 'test' && user.password == 'test') {
-            return Observable.of(true);
-        }
+        return new Observable((subsciber) => {
 
-        return Observable.of(false);
+            // simulate http call
+            Observable.timer(10).subscribe((innerSubsciber) => {
+                if (user.email === 'test' && user.password == 'test') {
+                    this.isLoggedInField = true;
+                }
+                
+                subsciber.next(this.isLoggedInField);
+                subsciber.complete();
+            }, () => {
+                console.log("error");
+            });
+        })
     }
 }

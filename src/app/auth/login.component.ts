@@ -9,9 +9,9 @@ import { IUser } from './user.interface'
 })
 export class LoginComponent {
   private user: IUser = {
-      email: '',
-      password: ''
-    };
+    email: '',
+    password: ''
+  };
 
   constructor(private auth: AuthService, private router: Router) {
     

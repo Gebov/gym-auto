@@ -8,8 +8,8 @@
     "experimentalDecorators": true,
     "removeComments": true,
     "noImplicitAny": false
-  },
-   "files": [
-    "./src/app/webpack.d.ts"
-  ]
+  }
+  //  "files": [
+  //   "./src/app/webpack.d.ts"
+  // ]
 }
