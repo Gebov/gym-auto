@@ -15,7 +15,7 @@ export class AuthService {
 
             // simulate http call
             Observable.timer(10).subscribe((innerSubsciber) => {
-                if (user.email === 'test' && user.password == 'test') {
+                if (user.email === 'test@test.com' && user.password == 'test') {
                     this.isLoggedInField = true;
                 }
                 

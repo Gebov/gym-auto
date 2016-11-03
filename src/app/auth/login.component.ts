@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
 import { AuthService } from './auth.service';
 import { Router } from '@angular/router';
-import { IUser } from './user.interface'
+import { IUser } from './user'
 
 @Component({
   selector: 'gym-login',
-  template: require('./login.component.html')
+  template: require('./login.component.html'),
+  styles: [require('./login.component.css').toString()]
 })
 export class LoginComponent {
   private user: IUser = {

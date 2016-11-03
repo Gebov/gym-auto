@@ -20,6 +20,7 @@
   "devDependencies": {
     "@types/core-js": "^0.9.34",
     "@types/node": "^6.0.46",
+    "css-loader": "^0.25.0",
     "gulp": "^3.9.1",
     "gulp-cli": "^1.2.2",
     "gulp-tslint": "^6.1.3",

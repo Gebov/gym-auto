@@ -1,13 +1,12 @@
-<form (submit)="login()">
-    <ul>
-        <li>
-            <label for="email">Email</label>
-            <input [(ngModel)]="user.email" type="email" name="email" placeholder="yourname@email.com" required />
-        </li>
-        <li>
-            <label for="password">Password</label>
-            <input [(ngModel)]="user.password" type="password" name="password" placeholder="password" required />
-        </li>
-        <li><input type="submit" value="Submit" /></li>
-    </ul>
+<form (submit)="login()" class="form">
+    <h1>Login or Register</h1>
+    <p>
+        <label for="email">Email</label>
+        <input [(ngModel)]="user.email" type="email" name="email" placeholder="yourname@email.com" required />
+    </p>
+    <p>
+        <label for="password">Password</label>
+        <input [(ngModel)]="user.password" type="password" name="password" placeholder="password" required />
+    </p>
+    <p><input type="submit" name="submit" value="Continue"/></p>
 </form>
