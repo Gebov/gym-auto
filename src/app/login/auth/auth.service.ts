@@ -4,26 +4,21 @@ import { IUser } from './user';
 
 @Injectable()
 export class AuthService {
-    private isLoggedInField: boolean = false;
+	private isLoggedInField: boolean = false;
 
-    public isLoggedIn(): boolean {
-        return this.isLoggedInField;
-    }
+	public isLoggedIn(): boolean {
+		return this.isLoggedInField;
+	}
 
-    public login(user: IUser) : Observable<boolean> {
-        return new Observable((subsciber) => {
+	public login(user: IUser): Observable<boolean> {
+		this.isLoggedInField = this.checkUser(user);
+		return Observable.of(this.isLoggedInField);
+	}
 
-            // simulate http call
-            Observable.timer(10).subscribe((innerSubsciber) => {
-                if (user.email === 'test@test.com' && user.password == 'test') {
-                    this.isLoggedInField = true;
-                }
-                
-                subsciber.next(this.isLoggedInField);
-                subsciber.complete();
-            }, () => {
-                console.log("error");
-            });
-        })
-    }
+	private checkUser(user: IUser): boolean {
+		if (user.email === 'test@test.com' && user.password == 'test')
+			return true;
+
+		return false;
+	}
 }
