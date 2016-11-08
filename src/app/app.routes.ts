@@ -1,15 +1,20 @@
-import { Routes } from '@angular/router';
-import { RouterModule } from "@angular/router";
+import { Routes, RouterModule } from '@angular/router';
+import { HomeComponent } from './home';
+import { AboutComponent } from './about';
+import { NoContentComponent } from './no-content';
 
-import { LoginComponent } from './auth/login.component';
-import { HomeComponent } from './home.component';
-import { AuthGuard } from './auth/auth.guard';
+import { DataResolver } from './app.resolver';
 
-const routes: Routes = [
-    { path: '', component: HomeComponent, canActivate: [AuthGuard] },
-    { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
-    { path: 'login',  component: LoginComponent }
-    // { path: '**',  component: null }
-]
 
-export const routing = RouterModule.forRoot(routes);
+export const ROUTES: Routes = [
+  { path: '',      component: HomeComponent },
+  { path: 'home',  component: HomeComponent },
+  { path: 'about', component: AboutComponent },
+  {
+    path: 'detail', loadChildren: () => System.import('./+detail').then((comp: any) => {
+      return comp.default;
+    })
+    ,
+  },
+  { path: '**',    component: NoContentComponent },
+];
