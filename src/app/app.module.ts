@@ -15,15 +15,17 @@ import { AppComponent } from './app.component';
 import { APP_RESOLVER_PROVIDERS } from './app.resolver';
 import { AppState, InternalStateType } from './app.service';
 import { HomeComponent } from './home';
-import { LoginComponent, AuthGuard, AuthService } from './login';
+import { LoginComponent, AuthGuard, AuthService, CurrentUserComponent } from './security';
 import { NoContentComponent } from './no-content';
+import { AppSettings } from './data';
 
 // Application wide providers
 const APP_PROVIDERS = [
   ...APP_RESOLVER_PROVIDERS,
   AppState,
   AuthGuard,
-  AuthService
+  AuthService,
+	AppSettings
 ];
 
 type StoreType = {
@@ -41,13 +43,14 @@ type StoreType = {
     AppComponent,
     HomeComponent,
     LoginComponent,
-    NoContentComponent
+    NoContentComponent,
+		CurrentUserComponent
   ],
   imports: [ // import Angular's modules
     BrowserModule,
     FormsModule,
     HttpModule,
-    RouterModule.forRoot(ROUTES, { useHash: true })
+    RouterModule.forRoot(ROUTES)
   ],
   providers: [ // expose our Services and Providers into Angular's dependency injection
     ENV_PROVIDERS,
@@ -55,7 +58,9 @@ type StoreType = {
   ]
 })
 export class AppModule {
-  constructor(public appRef: ApplicationRef, public appState: AppState) {}
+  constructor(public appRef: ApplicationRef, public appState: AppState, private settings: AppSettings ) {
+		this.settings.setApiUrl('http://localhost:5000/api');
+	}
 
   hmrOnInit(store: StoreType) {
     if (!store || !store.state) return;
