@@ -1,5 +1,5 @@
 <form (submit)="login(email.value, password.value)" class="form">
-    <h1>Login or Register</h1>
+    <h1>Login</h1>
 	<div *ngIf="message">{{message}}</div>
     <p>
         <label for="email">Email</label>
@@ -10,4 +10,5 @@
         <input #password type="password" name="password" placeholder="password" required />
     </p>
     <p><button type="submit">Submit</button></p>
+	<small> Not registered? Register <a routerLink="/register">here</a></small>
 </form>

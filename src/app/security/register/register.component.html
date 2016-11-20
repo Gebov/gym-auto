@@ -21,4 +21,5 @@
 		<small [hidden]="nickname.valid || (nickname.pristine && !f.submitted)"> Nickname is required </small>
     </p>
     <p><button type="submit" [disabled]="!f.valid">Submit</button></p>
+	<a routerLink="/login">back</a>
 </form>

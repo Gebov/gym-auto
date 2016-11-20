@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { Observable, Observer } from 'rxjs';
-import { IUser } from './user';
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
 
 @Injectable()
@@ -29,7 +28,7 @@ export class AuthService {
 		});
 	}
 
-	public register(user: IUser): Observable<any> {
+	public register(user: any): Observable<any> {
 		return new Observable<any>((scrb) => {
 			let url = this.getUrl("register");
 			this.http.post(url, user)
