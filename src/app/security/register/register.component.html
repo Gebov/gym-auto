@@ -1,0 +1,24 @@
+<form (ngSubmit)="register()" #f="ngForm" novalidate class="form">
+    <h1>Register</h1>
+    <p>
+        <label for="email">Email</label>
+        <input #email="ngModel"  [(ngModel)]="user.email" type="email" name="email" placeholder="yourname@email.com" pattern="^[a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,15})$" required />
+		<small [hidden]="email.valid || (email.pristine && !f.submitted)"> A valid email is required </small>
+    </p>
+    <p>
+        <label for="password">Password</label>
+        <input #password="ngModel" [(ngModel)]="user.password" type="password" name="password" placeholder="password" validateEqual="password" required />
+		<small [hidden]="password.valid || (password.pristine && !f.submitted)"> Password is required </small>
+    </p>
+	<p>
+        <label for="confirmPassword">Confirm Password</label>
+        <input #confirmPassword="ngModel" [(ngModel)]="user.confirmPassword" type="password" name="confirmPassword" placeholder="confirm password" validateEqual="password" reverse=”true” required />
+		<small [hidden]="confirmPassword.valid || (confirmPassword.pristine && !f.submitted)"> Confirm password and password must match </small>
+    </p>
+	<p>
+        <label for="nickname">Nickname</label>
+        <input #nickname="ngModel" [(ngModel)]="user.nickname" type="text" name="nickname" placeholder="nickname" required />
+		<small [hidden]="nickname.valid || (nickname.pristine && !f.submitted)"> Nickname is required </small>
+    </p>
+    <p><button type="submit" [disabled]="!f.valid">Submit</button></p>
+</form>

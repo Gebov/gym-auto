@@ -16,9 +16,10 @@ import { AppComponent } from './app.component';
 import { APP_RESOLVER_PROVIDERS } from './app.resolver';
 import { AppState, InternalStateType } from './app.service';
 import { HomeComponent } from './home';
-import { LoginComponent, AuthGuard, AuthService, CurrentUserComponent } from './security';
+import { AUTH_COMPONENTS, AuthGuard, AuthService } from './security';
 import { NoContentComponent } from './no-content';
 import { AppSettings } from './data';
+import { VALIDATORS } from "./forms/index";
 
 // Application wide providers
 const APP_PROVIDERS = [
@@ -43,9 +44,9 @@ type StoreType = {
   declarations: [
     AppComponent,
     HomeComponent,
-    LoginComponent,
     NoContentComponent,
-		CurrentUserComponent
+		...AUTH_COMPONENTS,
+		...VALIDATORS
   ],
   imports: [ // import Angular's modules
     BrowserModule,

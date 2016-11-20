@@ -15,15 +15,26 @@ export class AuthService {
 		return this.isLoggedInField;
 	}
 
-	public login(user: IUser): Observable<boolean> {
+	public login(email: string, password: string): Observable<boolean> {
 		this.isLoggedInField = false;
 
 		return new Observable<boolean>((scrb) => {
 			let url = this.getUrl("login");
-			this.http.post(url, user)
+			this.http.post(url, { email: email, password: password })
 				.subscribe((result) => {
 					this.isLoggedInField = true;
 					scrb.next(this.isLoggedInField);
+					scrb.complete();
+				});
+		});
+	}
+
+	public register(user: IUser): Observable<any> {
+		return new Observable<any>((scrb) => {
+			let url = this.getUrl("register");
+			this.http.post(url, user)
+				.subscribe((result) => {
+					scrb.next();
 					scrb.complete();
 				});
 		});
