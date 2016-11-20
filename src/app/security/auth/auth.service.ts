@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { Observable, Observer } from 'rxjs';
 import { IUser } from './user';
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
-import { AppSettings } from './../../data/app-settings.service';
 
 @Injectable()
 export class AuthService {
@@ -28,6 +27,20 @@ export class AuthService {
 					scrb.complete();
 				});
 		});
+	}
+
+	public logout(): Observable<any> {
+		if (this.isLoggedInField) {
+			this.isLoggedInField = false;
+			return new Observable<any>((scrb) => {
+				let url = this.getUrl("logout");
+				this.http.post(url, null)
+					.subscribe((result) => {
+						scrb.next();
+						scrb.complete();
+					});
+			});
+		}
 	}
 
 	public current(): Observable<UserData> {

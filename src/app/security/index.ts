@@ -1,3 +1,3 @@
-export * from './login.component';
+export * from './login/login.component';
 export * from './auth';
-export * from './current-user.component';
+export * from './current-user/current-user.component';
