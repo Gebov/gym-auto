@@ -1,4 +1,4 @@
-import { Http, ConnectionBackend, RequestOptions, RequestOptionsArgs, Request, Response } from "@angular/http";
+import { Http, ConnectionBackend, RequestOptions, RequestOptionsArgs, Request, Response, RequestMethod } from "@angular/http";
 import { Observable } from "rxjs";
 import { Injectable } from "@angular/core";
 
@@ -9,7 +9,9 @@ export class HttpWrapper extends Http {
 	}
 
 	request(url: string | Request, options?: RequestOptionsArgs): Observable<Response> {
-		return super.request(url, options).catch((response: Response, observable) => {
+		this.modifyRequest(<Request>url);
+		return super.request(url, options)
+		.catch((response: Response, observable) => {
 			let err = this.logError(response);
 			return Observable.throw(err.error.message);
 		});
@@ -20,6 +22,17 @@ export class HttpWrapper extends Http {
 		let errMsg = `${response.status} ${response.statusText} - ${parsedErr.error.message}`;
 		console.log(errMsg);
 		return parsedErr;
+	}
+
+	private modifyRequest(req: Request): void {
+		req.url = "http://localhost:5000/api/" + req.url;
+		req.withCredentials = true;
+		let methods = [RequestMethod.Put, RequestMethod.Post, RequestMethod.Patch];
+
+		if (methods.indexOf(req.method) > 0) {
+			let headers = req.headers;
+			headers.set("Content-Type", "application/json");
+		}
 	}
 }
 

@@ -6,11 +6,10 @@ import { AppSettings } from './../../data/app-settings.service';
 
 @Injectable()
 export class AuthService {
-	private authUrl;
+	private authSegment = 'auth';
 	private isLoggedInField: boolean = false;
 
-	constructor (private http: Http, private settings: AppSettings) {
-		this.authUrl = settings.getApiUrl() + '/auth';
+	constructor(private http: Http) {
 	}
 
 	public isLoggedIn(): boolean {
@@ -18,38 +17,36 @@ export class AuthService {
 	}
 
 	public login(user: IUser): Observable<boolean> {
-		let loginUrl = this.authUrl + '/login';
-		let headers = new Headers({ 'Content-Type': 'application/json' });
-    	let options = new RequestOptions({ headers: headers });
 		this.isLoggedInField = false;
 
 		return new Observable<boolean>((scrb) => {
-			this.http.post(loginUrl, user, options)
-                    // .map((res) => res.json())
-					.subscribe((result) => {
-						this.isLoggedInField = true;
-						scrb.next(this.isLoggedInField);
-						scrb.complete();
-						// handle any other claims here
-					});
+			let url = this.getUrl("login");
+			this.http.post(url, user)
+				.subscribe((result) => {
+					this.isLoggedInField = true;
+					scrb.next(this.isLoggedInField);
+					scrb.complete();
+				});
 		});
 	}
 
 	public current(): Observable<UserData> {
-		let currentUserlUrl = this.authUrl + '/current';
 		return new Observable<UserData>((scrb) => {
-			this.http.get(currentUserlUrl, { withCredentials: true })
+			this.http.get(this.getUrl("current"))
 				.map(x => x.json())
 				.subscribe(x => {
 					scrb.next(x);
-				}, null, () => {
 					scrb.complete();
-				})
+				});
 		});
+	}
+
+	private getUrl(methodSegment: string): string {
+		return this.authSegment + "/" + methodSegment;
 	}
 }
 
 interface UserData {
-	email:string,
+	email: string,
 	username: string
 }
