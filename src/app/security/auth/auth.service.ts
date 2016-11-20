@@ -21,21 +21,17 @@ export class AuthService {
 		let loginUrl = this.authUrl + '/login';
 		let headers = new Headers({ 'Content-Type': 'application/json' });
     	let options = new RequestOptions({ headers: headers });
+		this.isLoggedInField = false;
 
 		return new Observable<boolean>((scrb) => {
 			this.http.post(loginUrl, user, options)
                     // .map((res) => res.json())
 					.subscribe((result) => {
 						this.isLoggedInField = true;
-						// handle any other claims here
-					}, (err) => {
-						this.logError(err);
-						this.isLoggedInField = false;
-						scrb.error(err);
-					}, () => {
 						scrb.next(this.isLoggedInField);
 						scrb.complete();
-					})
+						// handle any other claims here
+					});
 		});
 	}
 
@@ -46,26 +42,10 @@ export class AuthService {
 				.map(x => x.json())
 				.subscribe(x => {
 					scrb.next(x);
-				}, (err) => {
-					this.logError(err);
-				}, () => {
+				}, null, () => {
 					scrb.complete();
 				})
 		});
-	}
-
-	private logError (error: Response | any): void {
-		// In a real world app, we might use a remote logging infrastructure
-		let errMsg: string;
-		if (error instanceof Response) {
-			const statusText = error.statusText || '';
-			const body = (<any>error)._body;
-			errMsg = `${error.status} - ${statusText} ${body}`;
-		} else {
-			errMsg = error.message ? error.message : error.toString();
-		}
-
-		console.log(errMsg);
 	}
 }
 

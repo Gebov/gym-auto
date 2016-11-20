@@ -9,6 +9,7 @@ import { removeNgStyles, createNewHosts, createInputTransfer } from '@angularcla
  * Platform and Environment providers/directives/pipes
  */
 import { ENV_PROVIDERS } from './environment';
+import { HTTP_PROVIDER_OVERRIDES } from "./data/index";
 import { ROUTES } from './app.routes';
 // App is our top level component
 import { AppComponent } from './app.component';
@@ -54,7 +55,8 @@ type StoreType = {
   ],
   providers: [ // expose our Services and Providers into Angular's dependency injection
     ENV_PROVIDERS,
-    APP_PROVIDERS
+    APP_PROVIDERS,
+		HTTP_PROVIDER_OVERRIDES
   ]
 })
 export class AppModule {
