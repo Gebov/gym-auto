@@ -3,6 +3,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
+
+import { AuthModule } from "./security/index";
+
 import { removeNgStyles, createNewHosts, createInputTransfer } from '@angularclass/hmr';
 
 /*
@@ -16,7 +19,6 @@ import { AppComponent } from './app.component';
 import { APP_RESOLVER_PROVIDERS } from './app.resolver';
 import { AppState, InternalStateType } from './app.service';
 import { HomeComponent } from './home';
-import { AUTH_COMPONENTS, AuthGuard, AuthService } from './security';
 import { NoContentComponent } from './no-content';
 import { AppSettings } from './data';
 import { VALIDATORS } from "./forms/index";
@@ -25,8 +27,6 @@ import { VALIDATORS } from "./forms/index";
 const APP_PROVIDERS = [
   ...APP_RESOLVER_PROVIDERS,
   AppState,
-  AuthGuard,
-  AuthService,
 	AppSettings
 ];
 
@@ -45,13 +45,13 @@ type StoreType = {
     AppComponent,
     HomeComponent,
     NoContentComponent,
-		...AUTH_COMPONENTS,
 		...VALIDATORS
   ],
   imports: [ // import Angular's modules
     BrowserModule,
     FormsModule,
     HttpModule,
+		AuthModule,
     RouterModule.forRoot(ROUTES)
   ],
   providers: [ // expose our Services and Providers into Angular's dependency injection

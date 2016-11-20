@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthService, IUser } from './../auth/index';
+import { AuthService } from "./../auth/auth.service";
 
 @Component({
   selector: 'gym-current-user',
