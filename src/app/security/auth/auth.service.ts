@@ -14,16 +14,18 @@ export class AuthService {
 		return this.isLoggedInField;
 	}
 
-	public login(email: string, password: string): Observable<boolean> {
+	public login(email: string, password: string): Observable<any> {
 		this.isLoggedInField = false;
 
-		return new Observable<boolean>((scrb) => {
+		return new Observable<any>((scrb) => {
 			let url = this.getUrl("login");
 			this.http.post(url, { email: email, password: password })
 				.subscribe((result) => {
 					this.isLoggedInField = true;
-					scrb.next(this.isLoggedInField);
+					scrb.next();
 					scrb.complete();
+				}, (err) => {
+					scrb.error(err);
 				});
 		});
 	}

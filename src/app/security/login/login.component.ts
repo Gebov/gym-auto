@@ -19,11 +19,10 @@ export class LoginComponent implements OnInit {
 
 	login(email, password): boolean {
 		this.auth.login(email, password)
-			.subscribe((success) => {
-				if (success)
-					this.router.navigate(['home']);
+			.subscribe(() => {
+				this.router.navigate(['home']);
 			}, (err) => {
-				console.log("Error logging in");
+				this.message = err;
 			});
 		return true;
 	}

@@ -16,9 +16,9 @@
 		<small [hidden]="confirmPassword.valid || (confirmPassword.pristine && !f.submitted)"> Confirm password and password must match </small>
     </p>
 	<p>
-        <label for="nickname">Nickname</label>
-        <input #nickname="ngModel" [(ngModel)]="user.nickname" type="text" name="nickname" placeholder="nickname" required />
-		<small [hidden]="nickname.valid || (nickname.pristine && !f.submitted)"> Nickname is required </small>
+        <label for="username">Username</label>
+        <input #username="ngModel" [(ngModel)]="user.username" type="text" name="username" placeholder="username" required />
+		<small [hidden]="username.valid || (username.pristine && !f.submitted)"> Username is required </small>
     </p>
     <p><button type="submit" [disabled]="!f.valid">Submit</button></p>
 	<a routerLink="/login">back</a>
