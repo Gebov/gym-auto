@@ -15,7 +15,7 @@ export class RegisterComponent {
 			email: '',
 			password: '',
 			confirmPassword: '',
-			nickname: ''
+			username: ''
 		};
 	}
 
