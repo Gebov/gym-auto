@@ -73,5 +73,6 @@ export class AuthService {
 
 interface UserData {
 	email: string,
-	username: string
+	username: string,
+	roles: Array<string>
 }
