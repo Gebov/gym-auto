@@ -7,6 +7,7 @@ import { AuthRoutingModule } from "./auth-routing.module";
 
 import { AuthService } from "./auth/auth.service";
 import { AuthGuard } from "./auth/auth.guard";
+import { RoleDirective } from "./auth/role.directive";
 
 import { LoginComponent } from './login/login.component';
 import { CurrentUserComponent } from './current-user/current-user.component';
@@ -16,7 +17,8 @@ import { RegisterComponent } from './register/register.component';
 	declarations: [
 		LoginComponent,
 		CurrentUserComponent,
-		RegisterComponent
+		RegisterComponent,
+		RoleDirective
 	],
 	imports: [
 		BrowserModule,
@@ -25,7 +27,8 @@ import { RegisterComponent } from './register/register.component';
 		AuthRoutingModule
 	],
 	exports: [
-		CurrentUserComponent
+		CurrentUserComponent,
+		RoleDirective
 	],
 	providers: [
 		AuthGuard,
