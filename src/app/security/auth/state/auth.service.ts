@@ -1,33 +1,30 @@
 import { Injectable } from '@angular/core';
 import { Observable, Observer } from 'rxjs';
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
+import { UserData } from "./auth.model";
 
 @Injectable()
 export class AuthService {
 	private authSegment = 'auth';
-	private isLoggedInField: boolean = false;
 
 	constructor(private http: Http) {
 	}
 
-	public isLoggedIn(): boolean {
-		return this.isLoggedInField;
-	}
-
 	public login(email: string, password: string): Observable<any> {
-		this.isLoggedInField = false;
+		let url = this.getUrl("login");
+		return this.http.post(url, { email: email, password: password });
 
-		return new Observable<any>((scrb) => {
-			let url = this.getUrl("login");
-			this.http.post(url, { email: email, password: password })
-				.subscribe((result) => {
-					this.isLoggedInField = true;
-					scrb.next();
-					scrb.complete();
-				}, (err) => {
-					scrb.error(err);
-				});
-		});
+		// return new Observable<any>((scrb) => {
+
+		// 	this.http.post(url, { email: email, password: password })
+		// 		.subscribe((result) => {
+		// 			this.isLoggedInField = true;
+		// 			scrb.next();
+		// 			scrb.complete();
+		// 		}, (err) => {
+		// 			scrb.error(err);
+		// 		});
+		// });
 	}
 
 	public register(user: any): Observable<any> {
@@ -69,10 +66,4 @@ export class AuthService {
 	private getUrl(methodSegment: string): string {
 		return this.authSegment + "/" + methodSegment;
 	}
-}
-
-interface UserData {
-	email: string,
-	username: string,
-	roles: Array<string>
 }

@@ -12,6 +12,10 @@ import { RoleDirective } from "./auth/role.directive";
 import { LoginComponent } from './login/login.component';
 import { CurrentUserComponent } from './current-user/current-user.component';
 import { RegisterComponent } from './register/register.component';
+import { addReducer } from "./../reducers";
+import { authReducer } from "./auth/auth.store";
+
+addReducer("authModel", authReducer);
 
 @NgModule({
 	declarations: [
@@ -36,4 +40,5 @@ import { RegisterComponent } from './register/register.component';
 	]
 })
 export class AuthModule {
+
 }
