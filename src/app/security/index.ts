@@ -1,3 +1,3 @@
 export * from "./auth.module";
-export * from "./auth/auth.guard";
-export * from "./auth/role.directive";
+export * from "./auth.guard";
+export * from "./role.directive";

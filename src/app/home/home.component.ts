@@ -1,7 +1,5 @@
 import { Component } from '@angular/core';
 
-import { AppState } from '../app.service';
-
 @Component({
   selector: 'gym-home',
   styleUrls: [ './home.component.css' ],
@@ -9,12 +7,4 @@ import { AppState } from '../app.service';
 })
 export class HomeComponent {
 
-  // TypeScript public modifiers
-  constructor(public appState: AppState) {
-
-  }
-
-  ngOnInit() {
-    console.log('hello `Home` component');
-  }
 }

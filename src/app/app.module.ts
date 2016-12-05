@@ -3,11 +3,10 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
-import { provideStore } from '@ngrx/store';
-import { getReducers } from "./reducers";
+import { StoreModule } from '@ngrx/store';
+import { getReducers, addReducer } from "./state";
 
 import { AuthModule } from "./security/index";
-import { removeNgStyles, createNewHosts, createInputTransfer } from '@angularclass/hmr';
 
 /*
  * Platform and Environment providers/directives/pipes
@@ -22,6 +21,8 @@ import { HomeComponent } from './home';
 import { NoContentComponent } from './no-content';
 import { AppSettings } from './data';
 import { VALIDATORS } from "./forms/index";
+import { EffectsModule } from '@ngrx/effects';
+import { AuthEffects } from "./security/state/auth.effects";
 
 // Application wide providers
 const APP_PROVIDERS = [
@@ -46,7 +47,8 @@ const APP_PROVIDERS = [
     HttpModule,
 		AuthModule,
     RouterModule.forRoot(ROUTES),
-		provideStore(getReducers())
+		StoreModule.provideStore(getReducers()),
+		EffectsModule.runAfterBootstrap(AuthEffects)
   ],
   providers: [ // expose our Services and Providers into Angular's dependency injection
     ENV_PROVIDERS,

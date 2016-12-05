@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthService } from './../auth/auth.service';
+import { Store } from "@ngrx/store";
+import { ActionImpl } from "./../../../state/action.impl";
+import { AuthActions } from "./../../state/auth.actions";
 
 @Component({
 	selector: 'gym-register',
@@ -9,7 +11,7 @@ import { AuthService } from './../auth/auth.service';
 export class RegisterComponent {
 	private user: any;
 
-	constructor(private auth: AuthService, private router: Router) {
+	constructor(private router: Router, private store: Store<any>) {
 		this.user =
 		{
 			email: '',
@@ -20,9 +22,6 @@ export class RegisterComponent {
 	}
 
 	register() {
-		this.auth.register(this.user)
-		.subscribe(() => {
-			this.router.navigate(['login']);
-		});
+		this.store.dispatch(new ActionImpl(AuthActions.REGISTER_INIT, this.user));
 	}
 }
