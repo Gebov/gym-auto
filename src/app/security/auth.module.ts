@@ -5,19 +5,21 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AuthRoutingModule } from "./auth-routing.module";
 
-import { AuthService } from "./auth/auth.service";
-import { AuthGuard } from "./auth/auth.guard";
-import { RoleDirective } from "./auth/role.directive";
+import { AuthService } from "./services/auth.service";
+import { AuthGuard } from "./auth.guard";
+import { RoleDirective } from "./role.directive";
+import { COMPONENTS } from "./components";
+import { CurrentUserComponent } from './components/current-user';
 
-import { LoginComponent } from './login/login.component';
-import { CurrentUserComponent } from './current-user/current-user.component';
-import { RegisterComponent } from './register/register.component';
+import { addReducer } from "./../state";
+import { authReducer } from "./state/auth.store";
+import { STATE_PROVIDERS } from "./state";
+
+addReducer("authState", authReducer);
 
 @NgModule({
 	declarations: [
-		LoginComponent,
-		CurrentUserComponent,
-		RegisterComponent,
+		...COMPONENTS,
 		RoleDirective
 	],
 	imports: [
@@ -31,9 +33,11 @@ import { RegisterComponent } from './register/register.component';
 		RoleDirective
 	],
 	providers: [
+		...STATE_PROVIDERS,
 		AuthGuard,
 		AuthService
 	]
 })
 export class AuthModule {
+
 }

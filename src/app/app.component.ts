@@ -3,8 +3,6 @@
  */
 import { Component, ViewEncapsulation } from '@angular/core';
 
-import { AppState } from './app.service';
-
 /*
  * App Component
  * Top Level Component
@@ -15,12 +13,6 @@ import { AppState } from './app.service';
   template: '<router-outlet></router-outlet>'
 })
 export class AppComponent {
-  constructor(public appState: AppState) {
 
-  }
-
-  ngOnInit() {
-    console.log('Initial App State', this.appState.state);
-  }
 
 }
