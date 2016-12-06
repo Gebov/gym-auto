@@ -12,15 +12,16 @@ export class AuthGuard implements CanActivate {
 	constructor(private router: Router, private store: Store<any>) { }
 
 	canActivate() {
+		return true;
 		// TODO: extract to constant
-		return this.store.select("authState")
-			.map((x: AuthModel) => {
-				if (!x.isLoggedIn)
-				 	this.router.navigate(["/login"]);
-				else
-					this.store.dispatch(new ActionImpl(AuthActions.GET_USER_DATA));
+		// return this.store.select("authState")
+		// 	.map((x: AuthModel) => {
+		// 		if (!x.isLoggedIn)
+		// 		 	this.router.navigate(["/login"]);
+		// 		else
+		// 			this.store.dispatch(new ActionImpl(AuthActions.GET_USER_DATA));
 
-				return x.isLoggedIn;
-			}).first();
+		// 		return x.isLoggedIn;
+		// 	}).first();
 	}
 }

@@ -1,0 +1,12 @@
+<kendo-grid [data]="gridData">
+	<kendo-grid-column field="email">
+		<template kendoHeaderTemplate let-column let-columnIndex="columnIndex">
+			{{column.field}}({{columnIndex}})
+		</template>
+	</kendo-grid-column>
+	<!--<kendo-grid-column field="UnitPrice">
+		<template kendoHeaderTemplate let-column let-columnIndex="columnIndex">
+			{{column.field}}({{columnIndex}})
+		</template>
+	</kendo-grid-column>-->
+</kendo-grid>
