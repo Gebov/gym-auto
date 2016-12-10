@@ -6,6 +6,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AuthRoutingModule } from "./auth-routing.module";
 
 import { GridModule } from '@progress/kendo-angular-grid';
+import { DialogModule } from '@progress/kendo-angular-dialog';
 
 import { AuthService } from "./services/auth.service";
 import { AuthGuard } from "./auth.guard";
@@ -31,7 +32,8 @@ addReducer("usersState", usersReducer);
 		FormsModule,
 		HttpModule,
 		AuthRoutingModule,
-		GridModule
+		GridModule,
+		DialogModule
 	],
 	exports: [
 		CurrentUserComponent,

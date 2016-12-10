@@ -1,0 +1,6 @@
+<kendo-dialog title="Action required"(close)="close('cancel')">
+	<kendo-dialog-actions>
+		<button kendoButton (click)="close('yes')" primary="true">Yes</button>
+		<button kendoButton (click)="close('no')">No</button>
+	</kendo-dialog-actions>
+</kendo-dialog>

@@ -75,6 +75,7 @@
     "@ngrx/core": "1.2.0",
     "@ngrx/effects": "2.0.0",
     "@ngrx/store": "2.2.1",
+    "@progress/kendo-angular-dialog": "^0.13.1",
     "@progress/kendo-angular-grid": "0.7.0",
     "@progress/kendo-data-query": "0.2.0",
     "assets-webpack-plugin": "3.4.0",
