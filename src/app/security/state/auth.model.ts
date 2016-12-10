@@ -9,3 +9,8 @@ export interface UserData {
 	username: string,
 	roles: Array<string>
 }
+
+export interface ServerCollection<T> {
+	data: Array<T>,
+	totalCount: number
+}

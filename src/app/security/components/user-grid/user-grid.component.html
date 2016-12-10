@@ -1,12 +1,11 @@
-<kendo-grid [data]="gridData">
+<kendo-grid [data]="users$ | async">
 	<kendo-grid-column field="email">
-		<template kendoHeaderTemplate let-column let-columnIndex="columnIndex">
-			{{column.field}}({{columnIndex}})
+	</kendo-grid-column>
+	<kendo-grid-column field="username">
+	</kendo-grid-column>
+	<kendo-grid-column field="roles">
+		<template kendoCellTemplate let-dataItem>
+			<div *ngFor="let role of dataItem.roles">{{role}}</div>
 		</template>
 	</kendo-grid-column>
-	<!--<kendo-grid-column field="UnitPrice">
-		<template kendoHeaderTemplate let-column let-columnIndex="columnIndex">
-			{{column.field}}({{columnIndex}})
-		</template>
-	</kendo-grid-column>-->
 </kendo-grid>

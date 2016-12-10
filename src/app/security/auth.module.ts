@@ -14,10 +14,12 @@ import { COMPONENTS } from "./components";
 import { CurrentUserComponent } from './components/current-user';
 
 import { addReducer } from "./../state";
-import { authReducer } from "./state/auth.store";
+import { authReducer, usersReducer } from "./state/auth.store";
 import { STATE_PROVIDERS } from "./state";
 
+// TODO: consider combining these under a common reducer or namespace
 addReducer("authState", authReducer);
+addReducer("usersState", usersReducer);
 
 @NgModule({
 	declarations: [

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable, Observer } from 'rxjs';
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
-import { UserData } from "./../state/auth.model";
+import { UserData, ServerCollection } from "./../state/auth.model";
 
 @Injectable()
 export class AuthService {
@@ -35,6 +35,13 @@ export class AuthService {
 
 		return this.http.get(url)
 			.map(x => <UserData>x.json());
+	}
+
+	public users(): Observable<ServerCollection<UserData>> {
+		let url = this.getUrl("users");
+
+		return this.http.get(url)
+			.map(x => <ServerCollection<UserData>>x.json());
 	}
 
 	private getUrl(methodSegment: string): string {

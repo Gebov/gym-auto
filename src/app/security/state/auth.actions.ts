@@ -10,4 +10,7 @@ export class AuthActions {
 	public static GET_USER_DATA_END = "[Auth] Get user data end";
 	public static REGISTER_INIT = "[Auth] register";
 	public static REGISTER_END = "[Auth] register end";
+
+	public static GET_USERS_INIT = "[Auth] get users";
+	public static GET_USERS_END = "[Auth] get users end";
 }
