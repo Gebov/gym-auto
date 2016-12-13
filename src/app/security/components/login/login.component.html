@@ -1,4 +1,4 @@
-<form (submit)="login(email.value, password.value)" class="form">
+<form (submit)="login(email.value, password.value, !!isPersistent.value)" class="form">
     <h1>Login</h1>
 	<div *ngIf="message">{{message}}</div>
     <p>
@@ -8,6 +8,10 @@
     <p>
         <label for="password">Password</label>
         <input #password type="password" name="password" placeholder="password" required />
+    </p>
+	<p>
+        <label for="isPersistent">Keep me logged in</label>
+        <input #isPersistent type="checkbox" name="isPersistent" />
     </p>
     <p><button type="submit">Submit</button></p>
 	<small> Not registered? Register <a routerLink="/register">here</a></small>

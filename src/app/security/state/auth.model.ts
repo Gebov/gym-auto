@@ -1,5 +1,6 @@
 export interface AuthModel {
 	isLoggedIn: boolean;
+	isInitialized: boolean;
 	token: string,
 	data: UserData
 }

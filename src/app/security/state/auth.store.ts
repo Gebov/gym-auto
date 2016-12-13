@@ -5,6 +5,7 @@ import { AuthActions } from "./auth.actions";
 
 const defaultState: AuthModel = {
 	isLoggedIn: false,
+	isInitialized: false,
 	token: null,
 	data: {
 		email: '',
@@ -20,7 +21,12 @@ export const authReducer = (state: AuthModel = defaultState, action: Action): Au
 		case AuthActions.LOGOUT_END:
 			return tassign(state, defaultState);
 		case AuthActions.GET_USER_DATA_END:
-			return tassign(state, { data: action.payload });
+			// request failed
+			if (action.payload == null)
+				return tassign(state, { isInitialized: true });
+			else
+				return tassign(state, { data: action.payload, isInitialized: true, isLoggedIn: true });
+
 		default:
 			return state;
 	}

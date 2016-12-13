@@ -20,7 +20,7 @@ export class AuthEffects {
 
 	@Effect() login$ = this.update$
 		.ofType(AuthActions.LOGIN_INIT)
-		.switchMap(x => this.svc.login(x.payload.email, x.payload.password)
+		.switchMap(x => this.svc.login(x.payload.email, x.payload.password, x.payload.isPersistent)
 			.map((success) => {
 				if (success)
 					this.router.navigate(['/home'])
@@ -48,7 +48,7 @@ export class AuthEffects {
 			.map((data) => {
 				return new ActionImpl(AuthActions.GET_USER_DATA_END, data);
 			})
-			.catch((err, observable) => { return Observable.of(new ActionImpl(AuthActions.GET_USER_DATA_END, {})); })
+			.catch((err, observable) => { return Observable.of(new ActionImpl(AuthActions.GET_USER_DATA_END, null)); })
 		);
 
 	@Effect() register$ = this.update$

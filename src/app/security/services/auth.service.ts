@@ -10,9 +10,9 @@ export class AuthService {
 	constructor(private http: Http) {
 	}
 
-	public login(email: string, password: string): Observable<boolean> {
+	public login(email: string, password: string, isPersistent: boolean): Observable<boolean> {
 		let url = this.getUrl("login");
-		return this.http.post(url, { email, password })
+		return this.http.post(url, { email, password, isPersistent })
 			.map(x => x.status == 200);
 	}
 

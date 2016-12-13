@@ -16,7 +16,6 @@ import { HTTP_PROVIDER_OVERRIDES } from "./data/index";
 import { ROUTES } from './app.routes';
 // App is our top level component
 import { AppComponent } from './app.component';
-import { APP_RESOLVER_PROVIDERS } from './app.resolver';
 import { HomeComponent } from './home';
 import { NoContentComponent } from './no-content';
 import { AppSettings } from './data';
@@ -26,7 +25,6 @@ import { AuthEffects } from "./security/state/auth.effects";
 
 // Application wide providers
 const APP_PROVIDERS = [
-  ...APP_RESOLVER_PROVIDERS,
 	AppSettings
 ];
 
