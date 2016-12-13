@@ -45,10 +45,19 @@ export class AuthService {
 	}
 
 	public deleteUser(data: UserData): Observable<UserData> {
+		// TODO: better routes
 		let url = this.getUrl("deleteuser");
 		url = `${url}\\${data.email}`;
 
 		return this.http.delete(url)
+			.map(x => data);
+	}
+
+	public updateUser(data: UserData): Observable<UserData> {
+		let url = this.getUrl("updateuser");
+		url = `${url}\\${data.email}`;
+
+		return this.http.patch(url, data)
 			.map(x => data);
 	}
 

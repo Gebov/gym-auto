@@ -14,5 +14,7 @@ export class AuthActions {
 	public static GET_USERS_INIT = "[Auth] get users";
 	public static GET_USERS_END = "[Auth] get users end";
 	public static DELETE_USER_INIT = "[Auth] delete user";
-	public static DELETE_USER_END = "[Auth] delete users end";
+	public static DELETE_USER_END = "[Auth] delete user end";
+	public static UPDATE_USER_INIT = "[Auth] update user";
+	public static UPDATE_USER_END = "[Auth] update user end";
 }

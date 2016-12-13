@@ -48,11 +48,6 @@ export class UserGridComponent implements OnInit {
 	}
 
 	onDelete(user: UserData): void {
-		this.store.select(x => {
-			return (<AuthModel>x.authState).data.email;
-		}).first().subscribe((email) => {
-			if (email !== user.email)
-				this.store.dispatch(new ActionImpl(AuthActions.DELETE_USER_INIT, user));
-		});
+		this.store.dispatch(new ActionImpl(AuthActions.DELETE_USER_INIT, user));
 	}
 }

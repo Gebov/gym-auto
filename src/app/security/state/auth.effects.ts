@@ -80,4 +80,13 @@ export class AuthEffects {
 			})
 			.catch((err, observable) => { return Observable.of(new ActionImpl(AuthActions.DELETE_USER_END, null)); })
 		);
+
+	@Effect() updateUser$ = this.update$
+		.ofType(AuthActions.UPDATE_USER_INIT)
+		.switchMap(x => this.svc.updateUser(x.payload)
+			.map((data) => {
+				return new ActionImpl(AuthActions.UPDATE_USER_END, data);
+			})
+			.catch((err, observable) => { return Observable.of(new ActionImpl(AuthActions.UPDATE_USER_END, null)); })
+		);
 }

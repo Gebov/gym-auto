@@ -1,6 +1,18 @@
-<kendo-dialog title="Action required"(close)="close('cancel')">
-	<kendo-dialog-actions>
-		<button kendoButton (click)="close('yes')" primary="true">Yes</button>
-		<button kendoButton (click)="close('no')">No</button>
-	</kendo-dialog-actions>
+<kendo-dialog title="Action required">
+	<form (submit)="onSubmit(roles)">
+		<div>
+			<label>Roles</label>
+			<select #roles multiple name="roles">
+				<option *ngFor="let role of roles$ | async" [value]="role.name" [selected]="role.selected">
+					{{role.name}}
+				</option>
+			</select>
+		</div>
+		<kendo-dialog-actions>
+			<button kendoButton primary="true" type="submit">Yes</button>
+			<button kendoButton>No</button>
+			<!--(click)="close('no')"-->
+		</kendo-dialog-actions>
+	</form>
+
 </kendo-dialog>

@@ -17,7 +17,7 @@ const defaultState: AuthModel = {
 export const authReducer = (state: AuthModel = defaultState, action: Action): AuthModel => {
 	switch (action.type) {
 		case AuthActions.LOGIN_END:
-			return tassign(state, { isLoggedIn: action.payload });
+			return tassign(state, { isLoggedIn: action.payload, isInitialized: false });
 		case AuthActions.LOGOUT_END:
 			return tassign(state, defaultState);
 		case AuthActions.GET_USER_DATA_END:
@@ -41,13 +41,23 @@ export const usersReducer = (state: ServerCollection<UserData> = defaultUsersSta
 		case AuthActions.GET_USERS_END:
 			return tassign(state, action.payload);
 		case AuthActions.DELETE_USER_END:
-			let index = state.data.findIndex((user) => {
+			let deleteIndex = state.data.findIndex((user) => {
 				return user.email == action.payload.email;
 			});
-			if (index !== -1) {
-				state.data.splice(index, 1);
+			if (deleteIndex !== -1) {
+				state.data.splice(deleteIndex, 1);
 				return tassign(state);
 			}
+			return state;
+		case AuthActions.UPDATE_USER_END:
+			let updateIndex = state.data.findIndex((user) => {
+				return user.email == action.payload.email;
+			});
+			if (updateIndex != -1) {
+				state.data.splice(updateIndex, 0, action.payload);
+				return tassign(state);
+			}
+			return state;
 		default:
 			return state;
 	}
