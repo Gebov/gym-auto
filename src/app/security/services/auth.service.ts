@@ -48,7 +48,7 @@ export class AuthService {
 		let url = this.getUrl("deleteuser");
 		url = `${url}\\${data.email}`;
 
-		return this.http.post(url, null)
+		return this.http.delete(url)
 			.map(x => data);
 	}
 
