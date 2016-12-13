@@ -18,6 +18,5 @@ export class EditUserComponent implements OnInit {
 
 	ngOnInit() {
 
-		// this.store.dispatch(new ActionImpl(AuthActions.GET_USERS_INIT));
 	}
 }

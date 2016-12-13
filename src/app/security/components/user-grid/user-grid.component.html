@@ -8,6 +8,11 @@
 			<div *ngFor="let role of dataItem.roles">{{role}}</div>
 		</template>
 	</kendo-grid-column>
+	<kendo-grid-column title="Delete">
+		<template kendoCellTemplate let-dataItem>
+			<button (click)="onDelete(dataItem)">Delete</button >
+		</template>
+	</kendo-grid-column>
 </kendo-grid>
 
 <gym-edit-user>

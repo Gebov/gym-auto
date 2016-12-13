@@ -44,6 +44,14 @@ export class AuthService {
 			.map(x => <ServerCollection<UserData>>x.json());
 	}
 
+	public deleteUser(data: UserData): Observable<UserData> {
+		let url = this.getUrl("deleteuser");
+		url = `${url}\\${data.email}`;
+
+		return this.http.post(url, null)
+			.map(x => data);
+	}
+
 	private getUrl(methodSegment: string): string {
 		return this.authSegment + "/" + methodSegment;
 	}

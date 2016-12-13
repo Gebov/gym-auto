@@ -22,8 +22,12 @@ export class AuthGuard implements CanActivate {
 		return this.store.select("authState")
 			.skipWhile((x: AuthModel) => !x.isInitialized)
 			.map((x: AuthModel) => {
-				if (!x.isLoggedIn)
-				 	this.router.navigate(["/login"]);
+				if (!x.isLoggedIn) {
+					if (routerState.url !== "/login")
+				 		this.router.navigate(["/login"]);
+
+					return true;
+				}
 				else if (routerState.url == "/login" || routerState.url == "/register")
 					this.router.navigate(["/"]);
 

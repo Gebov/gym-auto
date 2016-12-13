@@ -28,4 +28,8 @@ export class UserGridComponent implements OnInit {
 
 		this.store.dispatch(new ActionImpl(AuthActions.GET_USERS_INIT));
 	}
+
+	onDelete(user: UserData) {
+		this.store.dispatch(new ActionImpl(AuthActions.DELETE_USER_INIT, user));
+	}
 }

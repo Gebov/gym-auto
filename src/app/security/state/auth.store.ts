@@ -26,7 +26,6 @@ export const authReducer = (state: AuthModel = defaultState, action: Action): Au
 				return tassign(state, { isInitialized: true });
 			else
 				return tassign(state, { data: action.payload, isInitialized: true, isLoggedIn: true });
-
 		default:
 			return state;
 	}
@@ -41,6 +40,14 @@ export const usersReducer = (state: ServerCollection<UserData> = defaultUsersSta
 	switch (action.type) {
 		case AuthActions.GET_USERS_END:
 			return tassign(state, action.payload);
+		case AuthActions.DELETE_USER_END:
+			let index = state.data.findIndex((user) => {
+				return user.email == action.payload.email;
+			});
+			if (index !== -1) {
+				state.data.splice(index, 1);
+				return tassign(state);
+			}
 		default:
 			return state;
 	}
