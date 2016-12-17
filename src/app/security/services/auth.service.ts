@@ -37,30 +37,6 @@ export class AuthService {
 			.map(x => <UserData>x.json());
 	}
 
-	public users(): Observable<ServerCollection<UserData>> {
-		let url = this.getUrl("users");
-
-		return this.http.get(url)
-			.map(x => <ServerCollection<UserData>>x.json());
-	}
-
-	public deleteUser(data: UserData): Observable<UserData> {
-		// TODO: better routes
-		let url = this.getUrl("deleteuser");
-		url = `${url}\\${data.email}`;
-
-		return this.http.delete(url)
-			.map(x => data);
-	}
-
-	public updateUser(data: UserData): Observable<UserData> {
-		let url = this.getUrl("updateuser");
-		url = `${url}\\${data.email}`;
-
-		return this.http.patch(url, data)
-			.map(x => data);
-	}
-
 	private getUrl(methodSegment: string): string {
 		return this.authSegment + "/" + methodSegment;
 	}

@@ -53,10 +53,13 @@ export const usersReducer = (state: ServerCollection<UserData> = defaultUsersSta
 			let updateIndex = state.data.findIndex((user) => {
 				return user.email == action.payload.email;
 			});
+
 			if (updateIndex != -1) {
-				state.data.splice(updateIndex, 0, action.payload);
+				let toUpdate = state.data[updateIndex];
+				toUpdate = Object.assign(toUpdate, action.payload);
 				return tassign(state);
 			}
+
 			return state;
 		default:
 			return state;

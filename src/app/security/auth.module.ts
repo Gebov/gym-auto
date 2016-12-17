@@ -8,7 +8,7 @@ import { AuthRoutingModule } from "./auth-routing.module";
 import { GridModule } from '@progress/kendo-angular-grid';
 import { DialogModule } from '@progress/kendo-angular-dialog';
 
-import { AuthService } from "./services/auth.service";
+import { SERVICES } from "./services";
 import { AuthGuard } from "./auth.guard";
 import { RoleDirective } from "./role.directive";
 import { COMPONENTS } from "./components";
@@ -41,8 +41,8 @@ addReducer("usersState", usersReducer);
 	],
 	providers: [
 		...STATE_PROVIDERS,
-		AuthGuard,
-		AuthService
+		...SERVICES,
+		AuthGuard
 	]
 })
 export class AuthModule {

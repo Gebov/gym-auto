@@ -1,5 +1,5 @@
 <kendo-dialog title="Action required">
-	<form (submit)="onSubmit(roles)">
+	<form>
 		<div>
 			<label>Roles</label>
 			<select #roles multiple name="roles">
@@ -9,9 +9,8 @@
 			</select>
 		</div>
 		<kendo-dialog-actions>
-			<button kendoButton primary="true" type="submit">Yes</button>
-			<button kendoButton>No</button>
-			<!--(click)="close('no')"-->
+			<button (click)="onDone(roles)">Done</button>
+			<button (click)="onDone()">Cancel</button>
 		</kendo-dialog-actions>
 	</form>
 

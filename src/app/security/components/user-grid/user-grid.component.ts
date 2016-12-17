@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { Store } from "@ngrx/store";
 import { ActionImpl } from "./../../../state/action.impl";
@@ -7,6 +7,7 @@ import { ServerCollection, UserData } from "../../state/auth.model";
 import { Observable } from "rxjs";
 import { GridDataResult } from "@progress/kendo-angular-grid"
 import { AuthModel } from "./../../state/auth.model";
+import { EditUserComponent } from "./edit-user.component";
 
 @Component({
 	selector: 'gym-user-grid',
@@ -14,12 +15,13 @@ import { AuthModel } from "./../../state/auth.model";
 })
 export class UserGridComponent implements OnInit {
 	private users$: Observable<GridDataResult>;
+	private editedUser: UserData;
+	@ViewChild(EditUserComponent) userProfile: EditUserComponent;
 
 	constructor(private store: Store<any>) {
-
 	}
 
-	ngOnInit() {
+	ngOnInit(): void {
 		let users = this.store.select(x => {
 			return (<ServerCollection<UserData>>x.usersState);
 		});
@@ -49,5 +51,9 @@ export class UserGridComponent implements OnInit {
 
 	onDelete(user: UserData): void {
 		this.store.dispatch(new ActionImpl(AuthActions.DELETE_USER_INIT, user));
+	}
+
+	onEdit(user: UserData): void {
+		this.editedUser = user;
 	}
 }
