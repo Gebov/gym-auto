@@ -1,0 +1,17 @@
+<kendo-dialog title="Action required">
+	<form>
+		<div>
+			<label>Roles</label>
+			<select #roles multiple name="roles">
+				<option *ngFor="let role of roles$ | async" [value]="role.name" [selected]="role.selected">
+					{{role.name}}
+				</option>
+			</select>
+		</div>
+		<kendo-dialog-actions>
+			<button (click)="onDone(roles)">Done</button>
+			<button (click)="onDone()">Cancel</button>
+		</kendo-dialog-actions>
+	</form>
+
+</kendo-dialog>

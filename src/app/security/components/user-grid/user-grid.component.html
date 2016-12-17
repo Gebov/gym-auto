@@ -1,0 +1,20 @@
+<kendo-grid [data]="users$ | async">
+	<kendo-grid-column field="email">
+	</kendo-grid-column>
+	<kendo-grid-column field="username">
+	</kendo-grid-column>
+	<kendo-grid-column field="roles">
+		<template kendoCellTemplate let-dataItem>
+			<div *ngFor="let role of dataItem.roles">{{role}}</div>
+		</template>
+	</kendo-grid-column>
+	<kendo-grid-column title="Actions">
+		<template kendoCellTemplate let-dataItem>
+			<button (click)="onEdit(dataItem)">Edit</button>
+			<button (click)="onDelete(dataItem)">Delete</button >
+		</template>
+	</kendo-grid-column>
+</kendo-grid>
+
+<gym-edit-user *ngIf="editedUser" [userData]="editedUser" (close)="onEdit()">
+</gym-edit-user>

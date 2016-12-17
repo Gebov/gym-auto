@@ -5,17 +5,22 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AuthRoutingModule } from "./auth-routing.module";
 
-import { AuthService } from "./services/auth.service";
+import { GridModule } from '@progress/kendo-angular-grid';
+import { DialogModule } from '@progress/kendo-angular-dialog';
+
+import { SERVICES } from "./services";
 import { AuthGuard } from "./auth.guard";
 import { RoleDirective } from "./role.directive";
 import { COMPONENTS } from "./components";
 import { CurrentUserComponent } from './components/current-user';
 
 import { addReducer } from "./../state";
-import { authReducer } from "./state/auth.store";
+import { authReducer, usersReducer } from "./state/auth.store";
 import { STATE_PROVIDERS } from "./state";
 
+// TODO: consider combining these under a common reducer or namespace
 addReducer("authState", authReducer);
+addReducer("usersState", usersReducer);
 
 @NgModule({
 	declarations: [
@@ -26,7 +31,9 @@ addReducer("authState", authReducer);
 		BrowserModule,
 		FormsModule,
 		HttpModule,
-		AuthRoutingModule
+		AuthRoutingModule,
+		GridModule,
+		DialogModule
 	],
 	exports: [
 		CurrentUserComponent,
@@ -34,8 +41,8 @@ addReducer("authState", authReducer);
 	],
 	providers: [
 		...STATE_PROVIDERS,
-		AuthGuard,
-		AuthService
+		...SERVICES,
+		AuthGuard
 	]
 })
 export class AuthModule {
