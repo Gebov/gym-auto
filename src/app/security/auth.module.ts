@@ -11,8 +11,7 @@ import { DialogModule } from '@progress/kendo-angular-dialog';
 import { SERVICES } from "./services";
 import { AuthGuard } from "./auth.guard";
 import { RoleDirective } from "./role.directive";
-import { COMPONENTS } from "./components";
-import { CurrentUserComponent } from './components/current-user';
+import { COMPONENTS, EXPORTED_COMPONENTS } from "./components";
 
 import { addReducer } from "./../state";
 import { authReducer, usersReducer } from "./state/auth.store";
@@ -36,7 +35,7 @@ addReducer("usersState", usersReducer);
 		DialogModule
 	],
 	exports: [
-		CurrentUserComponent,
+		...EXPORTED_COMPONENTS,
 		RoleDirective
 	],
 	providers: [

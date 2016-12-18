@@ -17,7 +17,6 @@ export class EditUserComponent implements OnChanges {
 	@Output() close = new EventEmitter(false);
 
 	constructor(private store: Store<any>) {
-
 	}
 
 	ngOnChanges(changes: SimpleChanges): void {
@@ -61,6 +60,7 @@ export class EditUserComponent implements OnChanges {
 
 			this.userData.roles = selectedRoles;
 			this.store.dispatch(new ActionImpl(AuthActions.UPDATE_USER_INIT, this.userData));
+			// this.service.updateUser(this.userData);
 		}
 
 		this.close.emit();

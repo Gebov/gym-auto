@@ -7,7 +7,7 @@ import { ServerCollection, UserData } from "../../state/auth.model";
 import { Observable } from "rxjs";
 import { GridDataResult } from "@progress/kendo-angular-grid"
 import { AuthModel } from "./../../state/auth.model";
-import { EditUserComponent } from "./edit-user.component";
+import { EditUserComponent } from "../edit-user";
 
 @Component({
 	selector: 'gym-user-grid',
