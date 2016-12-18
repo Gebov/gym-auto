@@ -7,15 +7,16 @@ import { ServerCollection, UserData } from "../../state/auth.model";
 import { Observable } from "rxjs";
 import { GridDataResult } from "@progress/kendo-angular-grid"
 import { AuthModel } from "./../../state/auth.model";
-import { EditUserComponent } from "./edit-user.component";
+import { EditUserComponent } from "../edit-user";
 
 @Component({
 	selector: 'gym-user-grid',
 	template: require('./user-grid.component.html')
 })
 export class UserGridComponent implements OnInit {
-	private users$: Observable<GridDataResult>;
-	private editedUser: UserData;
+	users$: Observable<GridDataResult>;
+	editedUser$: Observable<any>;
+
 	@ViewChild(EditUserComponent) userProfile: EditUserComponent;
 
 	constructor(private store: Store<any>) {
@@ -30,6 +31,7 @@ export class UserGridComponent implements OnInit {
 			return (<AuthModel>x.authState);
 		});
 
+		this.editedUser$ = this.store.select(x => x.editUserState.user);
 		// show all users except the current one
 		this.users$ = Observable.combineLatest(users, current)
 		.map(x => {
@@ -54,6 +56,6 @@ export class UserGridComponent implements OnInit {
 	}
 
 	onEdit(user: UserData): void {
-		this.editedUser = user;
+		this.store.dispatch(new ActionImpl(AuthActions.EDIT_USER_INIT, user));
 	}
 }

@@ -1,4 +1,4 @@
-import { AuthModel, ServerCollection, UserData } from "./auth.model";
+import { AuthModel, ServerCollection, UserData, EditedUser } from "./auth.model";
 import { tassign } from "./../../state";
 import { Action } from '@ngrx/store';
 import { AuthActions } from "./auth.actions";
@@ -65,3 +65,26 @@ export const usersReducer = (state: ServerCollection<UserData> = defaultUsersSta
 			return state;
 	}
 };
+
+const editUserState: EditedUser = {
+	isBusy: false,
+	errors: [],
+	user: null
+}
+
+export const editedUserReducer = (state: EditedUser = editUserState, action: Action): EditedUser => {
+	switch (action.type) {
+		case AuthActions.UPDATE_USER_INIT:
+			return tassign(state, { isBusy: true });
+		case AuthActions.UPDATE_USER_END:
+			return tassign(state, { isBusy: false, user: null });
+		case AuthActions.EDIT_USER_INIT:
+			return tassign(state, { user: action.payload });
+		case AuthActions.EDIT_USER_END:
+			return tassign(state, { user: null });
+	}
+
+	return state;
+}
+
+

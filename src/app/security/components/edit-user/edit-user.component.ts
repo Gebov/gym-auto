@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { Store } from "@ngrx/store";
 import { ActionImpl } from "./../../../state/action.impl";
 import { AuthActions } from "./../../state/auth.actions";
-import { ServerCollection, UserData } from "../../state/auth.model";
+import { ServerCollection, UserData, EditedUser } from "../../state/auth.model";
 import { Observable, Subject, ReplaySubject } from "rxjs";
 import { AuthModel } from "./../../state/auth.model";
 
@@ -13,11 +13,10 @@ import { AuthModel } from "./../../state/auth.model";
 })
 export class EditUserComponent implements OnChanges {
 	roles$: Subject<Array<RoleModel>> = new ReplaySubject<Array<RoleModel>>(1);
+
 	@Input() userData: UserData;
-	@Output() close = new EventEmitter(false);
 
 	constructor(private store: Store<any>) {
-
 	}
 
 	ngOnChanges(changes: SimpleChanges): void {
@@ -62,8 +61,10 @@ export class EditUserComponent implements OnChanges {
 			this.userData.roles = selectedRoles;
 			this.store.dispatch(new ActionImpl(AuthActions.UPDATE_USER_INIT, this.userData));
 		}
+		else {
+			this.store.dispatch(new ActionImpl(AuthActions.EDIT_USER_END));
+		}
 
-		this.close.emit();
 		return false;
 	}
 }

@@ -1,7 +1,8 @@
 import { RegisterComponent } from "./register";
 import { LoginComponent } from "./login";
 import { CurrentUserComponent } from "./current-user";
-import { UserGridComponent, EditUserComponent } from "./user-grid";
+import { UserGridComponent } from "./user-grid";
+import { EditUserComponent } from "./edit-user";
 
 export const COMPONENTS = [
 	RegisterComponent,
@@ -9,4 +10,8 @@ export const COMPONENTS = [
 	CurrentUserComponent,
 	UserGridComponent,
 	EditUserComponent
+]
+
+export const EXPORTED_COMPONENTS = [
+	CurrentUserComponent
 ]

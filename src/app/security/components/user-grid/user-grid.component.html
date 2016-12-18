@@ -16,5 +16,5 @@
 	</kendo-grid-column>
 </kendo-grid>
 
-<gym-edit-user *ngIf="editedUser" [userData]="editedUser" (close)="onEdit()">
+<gym-edit-user *ngIf="editedUser$ | async" [userData]="editedUser$ | async">
 </gym-edit-user>
