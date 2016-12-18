@@ -14,12 +14,13 @@ import { RoleDirective } from "./role.directive";
 import { COMPONENTS, EXPORTED_COMPONENTS } from "./components";
 
 import { addReducer } from "./../state";
-import { authReducer, usersReducer } from "./state/auth.store";
+import { authReducer, usersReducer, editedUserReducer } from "./state/auth.store";
 import { STATE_PROVIDERS } from "./state";
 
 // TODO: consider combining these under a common reducer or namespace
 addReducer("authState", authReducer);
 addReducer("usersState", usersReducer);
+addReducer("editUserState", editedUserReducer);
 
 @NgModule({
 	declarations: [
