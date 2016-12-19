@@ -9,7 +9,7 @@ import { GridModule } from '@progress/kendo-angular-grid';
 import { DialogModule } from '@progress/kendo-angular-dialog';
 
 import { SERVICES } from "./services";
-import { AuthGuard } from "./auth.guard";
+import { GUARDS } from "./guards";
 import { RoleDirective } from "./role.directive";
 import { COMPONENTS, EXPORTED_COMPONENTS } from "./components";
 
@@ -42,7 +42,7 @@ addReducer("editUserState", editedUserReducer);
 	providers: [
 		...STATE_PROVIDERS,
 		...SERVICES,
-		AuthGuard
+		...GUARDS
 	]
 })
 export class AuthModule {

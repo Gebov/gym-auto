@@ -4,12 +4,17 @@ import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './components/login';
 import { RegisterComponent }  from './components/register';
 import { UserGridComponent } from "./components/user-grid";
-import { AuthGuard } from "./auth.guard";
+import { ManageOutletComponent } from "./components/manage-outlet";
+import { AuthGuard } from "./guards/auth.guard";
+import { RoleGuard } from "./guards/role.guard";
 
 const heroesRoutes: Routes = [
   { path: 'login',  component: LoginComponent, canActivate: [AuthGuard] },
   { path: 'register', component: RegisterComponent, canActivate: [AuthGuard] },
-	{ path: 'manage-users', component: UserGridComponent, canActivate: [AuthGuard] }
+	{ path: 'manage', component: ManageOutletComponent, canActivate: [AuthGuard, RoleGuard], data: { roles: ["Administrator"] }, children: [
+		{ path: '', component: UserGridComponent },
+		{ path: 'users', component: UserGridComponent }
+	]}
 ];
 
 @NgModule({

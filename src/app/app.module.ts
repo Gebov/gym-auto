@@ -11,7 +11,6 @@ import { AuthModule } from "./security/index";
 /*
  * Platform and Environment providers/directives/pipes
  */
-import { ENV_PROVIDERS } from './environment';
 import { HTTP_PROVIDER_OVERRIDES } from "./data/index";
 import { ROUTES } from './app.routes';
 // App is our top level component
@@ -48,8 +47,7 @@ const APP_PROVIDERS = [
 		StoreModule.provideStore(getReducers()),
 		EffectsModule.runAfterBootstrap(AuthEffects)
   ],
-  providers: [ // expose our Services and Providers into Angular's dependency injection
-    ENV_PROVIDERS,
+  providers: [
     APP_PROVIDERS,
 		HTTP_PROVIDER_OVERRIDES
   ]
