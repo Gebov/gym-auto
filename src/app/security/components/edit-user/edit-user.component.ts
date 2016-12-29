@@ -9,7 +9,7 @@ import { AuthModel } from "./../../state/auth.model";
 
 @Component({
 	selector: 'gym-edit-user',
-	template: require('./edit-user.component.html')
+	templateUrl: './edit-user.component.html'
 })
 export class EditUserComponent implements OnChanges {
 	roles$: Subject<Array<RoleModel>> = new ReplaySubject<Array<RoleModel>>(1);

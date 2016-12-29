@@ -13,7 +13,7 @@ export class HttpWrapper extends Http {
 		return super.request(url, options)
 		.catch((response: Response, observable) => {
 			let err = this.handleError(response);
-			return Observable.throw(err.error.message);
+			return Observable.throw<Response>(err.error.message);
 		});
 	}
 

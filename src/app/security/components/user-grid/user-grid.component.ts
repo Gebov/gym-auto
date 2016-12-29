@@ -11,7 +11,7 @@ import { EditUserComponent } from "../edit-user";
 
 @Component({
 	selector: 'gym-user-grid',
-	template: require('./user-grid.component.html')
+	templateUrl: './user-grid.component.html'
 })
 export class UserGridComponent implements OnInit {
 	users$: Observable<GridDataResult>;

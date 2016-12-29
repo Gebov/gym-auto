@@ -3,11 +3,11 @@ import { ActivatedRoute } from '@angular/router';
 import { Store } from "@ngrx/store";
 import { ActionImpl } from "./../../../state/action.impl";
 import { AuthActions } from "./../../state/auth.actions";
-import { AuthService } from "./../../services/auth.service.ts"
+import { AuthService } from "./../../services/auth.service";
 
 @Component({
 	selector: 'gym-login',
-	template: require('./login.component.html')
+	templateUrl: './login.component.html'
 })
 export class LoginComponent implements OnInit {
 	private message: string;

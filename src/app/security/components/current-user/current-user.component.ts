@@ -8,7 +8,7 @@ import { Observable } from "rxjs";
 
 @Component({
   selector: 'gym-current-user',
-  template: require('./current-user.component.html'),
+  templateUrl: './current-user.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CurrentUserComponent implements OnInit {

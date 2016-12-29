@@ -7,7 +7,6 @@ import { ActionImpl } from "./../../state/action.impl";
 
 import { Router } from "@angular/router";
 import { Observable } from "rxjs";
-import { go } from '@ngrx/router-store';
 import { Store } from "@ngrx/store";
 
 // TODO: separate effects into two classes and only register one of them on root level

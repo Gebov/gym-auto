@@ -3,7 +3,6 @@ import { Router, CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot } from
 import { Store } from "@ngrx/store";
 import { Observable } from "rxjs";
 
-import { AuthStore } from './../state/auth.state';
 import { AuthModel } from './../state/auth.model';
 import { AuthActions } from "./../state/auth.actions";
 import { ActionImpl } from "./../../state/action.impl";
