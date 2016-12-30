@@ -22,16 +22,22 @@ export class AuthGuard implements CanActivate {
 		return this.store.select("authState")
 			.skipWhile((x: AuthModel) => !x.isInitialized)
 			.map((x: AuthModel) => {
-				if (!x.isLoggedIn) {
-					if (routerState.url !== "/login")
-				 		this.router.navigate(["/login"]);
+				let currentUrl = routerState.url;
+				if (allowedAnonymousRoutes.indexOf(currentUrl) !== -1) {
+					if (!x.isLoggedIn)
+						return true;
 
-					return true;
-				}
-				else if (routerState.url == "/login" || routerState.url == "/register")
 					this.router.navigate(["/"]);
+					return false;
+				} else if (!x.isLoggedIn)
+					this.router.navigate(["/login"]);
 
 				return x.isLoggedIn;
 			}).first();
 	}
 }
+
+const allowedAnonymousRoutes = [
+	"/register",
+	"/login"
+]
