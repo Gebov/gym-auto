@@ -1,12 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-
-import { UserGridComponent } from "./components/user-grid";
-import { ManageOutletComponent } from "./components/manage-outlet";
+import { ROUTES } from "./areas/";
 
 export const ADMIN_ROUTES: Routes = [
-	{ path: '', component: UserGridComponent },
-	{ path: 'users', component: UserGridComponent }
+	...ROUTES
 ];
 
 @NgModule({

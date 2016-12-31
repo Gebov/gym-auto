@@ -1,7 +1,7 @@
 import { Component, OnChanges, Input, SimpleChanges, EventEmitter, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { Store } from "@ngrx/store";
-import { ActionImpl } from "./../../../../state/action.impl";
+import { ActionImpl } from "./../../../../../../state/action.impl";
 import { UsersActions } from "./../../state/users.actions";
 import { ServerCollection, UserData, EditedUser } from "../../state/users.model";
 import { Observable, Subject, ReplaySubject } from "rxjs";

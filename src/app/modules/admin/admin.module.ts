@@ -6,19 +6,12 @@ import { GridModule } from '@progress/kendo-angular-grid';
 import { DialogModule } from '@progress/kendo-angular-dialog';
 import { EffectsModule } from '@ngrx/effects';
 
-import { AdminRoutingModule } from "./admin-routing.module";
+// import { AdminRoutingModule } from "./admin-routing.module";
 
-import { SERVICES } from "./services";
-import { COMPONENTS } from "./components";
+import { COMPONENTS } from "./areas";
 
-import { addReducer } from "./../../state";
-import { usersReducer, editedUserReducer } from "./state/users.reducer";
-import { UsersEffects } from "./state/users.effects";
-
-import { STATE_PROVIDERS } from "./state";
-
-addReducer("usersState", usersReducer);
-addReducer("editUserState", editedUserReducer);
+import { EFFECTS } from "./areas";
+import { PROVIDERS } from "./areas";
 
 @NgModule({
 	declarations: [
@@ -30,11 +23,10 @@ addReducer("editUserState", editedUserReducer);
 		GridModule,
 		DialogModule,
 		// AdminRoutingModule,
-		EffectsModule.run(UsersEffects)
+		...EFFECTS
 	],
 	providers: [
-		...STATE_PROVIDERS,
-		...SERVICES
+		...PROVIDERS
 	]
 })
 export class AdminModule {

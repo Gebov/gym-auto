@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { Store } from "@ngrx/store";
-import { ActionImpl } from "./../../../../state/action.impl";
+import { ActionImpl } from "./../../../../../../state/action.impl";
 import { UsersActions } from "./../../state/users.actions";
 import { ServerCollection, UserData } from "../../state/users.model";
 import { Observable } from "rxjs";

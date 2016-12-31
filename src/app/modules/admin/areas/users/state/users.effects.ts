@@ -1,14 +1,16 @@
 import { Effect, Actions } from '@ngrx/effects';
 import { Injectable } from "@angular/core";
-import { UsersActions } from "./users.actions";
-import { UsersService } from "./../services/users.service";
-import { ActionImpl } from "./../../../state/action.impl";
 
+import { EffectsModule } from '@ngrx/effects';
 import { Observable } from "rxjs";
 import { Store } from "@ngrx/store";
 
+import { UsersActions } from "./users.actions";
+import { UsersService } from "./../services/users.service";
+import { ActionImpl } from "./../../../../../state/action.impl";
+
 @Injectable()
-export class UsersEffects {
+class UsersEffects {
 	constructor(
 		private update$: Actions,
 		private actions: UsersActions,
@@ -42,3 +44,5 @@ export class UsersEffects {
 			.catch((err, observable) => { return Observable.of(new ActionImpl(UsersActions.UPDATE_USER_END, null)); })
 		);
 }
+
+export const EFFECTS_MODULE = EffectsModule.run(UsersEffects);
