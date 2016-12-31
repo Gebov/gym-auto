@@ -11,9 +11,9 @@ export class NavMenuComponent implements OnInit {
 	}
 
 	ngOnInit() {
-		let routes: Array<IRoute> = [
+		this.routes = [
 			{
-				title: 'home',
+				title: 'Home',
 				url: '/home'
 			},
 			{
@@ -21,7 +21,7 @@ export class NavMenuComponent implements OnInit {
 				url: '/admin'
 			}
 		];
-		debugger;
+
 		this.currentRoute.url.subscribe(x => {
 			debugger;
 		});
