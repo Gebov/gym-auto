@@ -8,7 +8,6 @@ import { StoreModule } from '@ngrx/store';
 import { AuthModule } from "./modules/security";
 import { AdminModule } from "./modules/admin";
 import { EffectsModule } from '@ngrx/effects';
-// import { UsersEffects } from "./modules/admin/state/users.effects";
 import { getReducers } from "./state";
 import { HTTP_PROVIDER_OVERRIDES } from "./data/index";
 import { ROUTES } from './app.routes';
@@ -35,7 +34,6 @@ const APP_PROVIDERS = [
 		AdminModule,
     RouterModule.forRoot(ROUTES),
 		StoreModule.provideStore(getReducers()),
-		// EffectsModule.run(UsersEffects),
 		EffectsModule.runAfterBootstrap(AuthEffects)
   ],
   providers: [
