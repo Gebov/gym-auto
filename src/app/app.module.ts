@@ -16,6 +16,8 @@ import { AppSettings } from './data';
 import { VALIDATORS } from "./forms/index";
 import { AuthEffects } from "./modules/security/state/auth.effects";
 
+import { SERVICES } from "./services";
+
 const APP_PROVIDERS = [
 	AppSettings
 ];
@@ -38,7 +40,8 @@ const APP_PROVIDERS = [
   ],
   providers: [
     APP_PROVIDERS,
-		HTTP_PROVIDER_OVERRIDES
+		HTTP_PROVIDER_OVERRIDES,
+		...SERVICES
   ]
 })
 export class AppModule {
