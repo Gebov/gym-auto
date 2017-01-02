@@ -8,7 +8,6 @@ import { StoreModule } from '@ngrx/store';
 import { AuthModule } from "./modules/security";
 import { AdminModule } from "./modules/admin";
 import { EffectsModule } from '@ngrx/effects';
-
 import { getReducers } from "./state";
 import { HTTP_PROVIDER_OVERRIDES } from "./data/index";
 import { ROUTES } from './app.routes';
@@ -16,6 +15,7 @@ import { COMPONENTS, APP_COMPONENT } from "./components";
 import { AppSettings } from './data';
 import { VALIDATORS } from "./forms/index";
 import { AuthEffects } from "./modules/security/state/auth.effects";
+
 import { SERVICES } from "./services";
 
 const APP_PROVIDERS = [

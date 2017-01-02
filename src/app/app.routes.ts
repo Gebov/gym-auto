@@ -24,7 +24,7 @@ export const ROUTES: Routes = [
 						roles: ["Administrator"]
 					}
 				}
-			},
+			}
 		]
 	},
 	{ path: '**', component: NoContentComponent }
