@@ -5,9 +5,6 @@ import { CommonModule } from '@angular/common';
 
 import { AuthRoutingModule } from "./auth-routing.module";
 
-import { GridModule } from '@progress/kendo-angular-grid';
-import { DialogModule } from '@progress/kendo-angular-dialog';
-
 import { SERVICES } from "./services";
 import { GUARDS } from "./guards";
 import { DIRECTIVES, EXPORTED_DIRECTIVES } from "./directives";
@@ -28,9 +25,7 @@ addReducer("authState", authReducer);
 		CommonModule,
 		FormsModule,
 		HttpModule,
-		AuthRoutingModule,
-		GridModule,
-		DialogModule
+		AuthRoutingModule
 	],
 	exports: [
 		...EXPORTED_COMPONENTS,

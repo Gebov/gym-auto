@@ -12,7 +12,7 @@
   "license": "ISC",
   "scripts": {
     "build:dev": "webpack --config config/webpack.dev.js --progress --profile",
-    "build:docker": "npm run build:prod && docker build -t angular2-webpack-start:latest .",
+    "build:docker": "npm run build:prod && docker build -t gym:latest .",
     "build:prod": "webpack --config config/webpack.prod.js  --progress --profile --bail",
     "build": "npm run build:dev",
     "ci": "npm run lint && npm test && npm run e2e",
@@ -72,9 +72,6 @@
     "@ngrx/core": "1.2.0",
     "@ngrx/effects": "2.0.0",
     "@ngrx/store": "2.2.1",
-    "@progress/kendo-angular-dialog": "0.13.3",
-    "@progress/kendo-angular-grid": "0.8.2",
-    "@progress/kendo-data-query": "0.3.4",
     "assets-webpack-plugin": "3.4.0",
     "core-js": "2.4.1",
     "http-server": "0.9.0",
