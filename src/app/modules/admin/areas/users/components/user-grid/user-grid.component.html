@@ -1,20 +1,39 @@
-<kendo-grid [data]="users$ | async">
-	<kendo-grid-column field="email">
-	</kendo-grid-column>
-	<kendo-grid-column field="username">
-	</kendo-grid-column>
-	<kendo-grid-column field="roles">
-		<template kendoCellTemplate let-dataItem>
-			<div *ngFor="let role of dataItem.roles">{{role}}</div>
-		</template>
-	</kendo-grid-column>
-	<kendo-grid-column title="Actions">
-		<template kendoCellTemplate let-dataItem>
-			<button (click)="onEdit(dataItem)">Edit</button>
-			<button (click)="onDelete(dataItem)">Delete</button >
-		</template>
-	</kendo-grid-column>
-</kendo-grid>
+<table>
+	<thead>
+		<tr>
+			<th>
+				email
+			</th>
+			<th>
+				username
+			</th>
+			<th>
+				roles
+			</th>
+			<th>
+				Actions
+			</th>
+		</tr>
+
+	</thead>
+	<tbody>
+		<tr *ngFor="let user of users$ | async">
+			<td>
+				{{user.email}}
+			</td>
+			<td>
+				{{user.username}}
+			</td>
+			<td>
+				<div *ngFor="let role of user.roles">{{role}}</div>
+			</td>
+			<td>
+				<button (click)="onEdit(user)">Edit</button>
+				<button (click)="onDelete(user)">Delete</button>
+			</td>
+		</tr>
+	</tbody>
+</table>
 
 <gym-edit-user *ngIf="editedUser$ | async" [userData]="editedUser$ | async">
 </gym-edit-user>
