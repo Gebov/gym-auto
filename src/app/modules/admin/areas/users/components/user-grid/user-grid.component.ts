@@ -14,7 +14,7 @@ import { EditUserComponent } from "../edit-user";
 	templateUrl: './user-grid.component.html'
 })
 export class UserGridComponent implements OnInit {
-	users$: Observable<GridDataResult>;
+	users$: Observable<Array<UserData>>;
 	editedUser$: Observable<any>;
 
 	@ViewChild(EditUserComponent) userProfile: EditUserComponent;
@@ -42,10 +42,7 @@ export class UserGridComponent implements OnInit {
 				return user.email !== current.data.email;
 			})
 
-			return {
-				data: filtered,
-				total: users.totalCount
-			};
+			return filtered;
 		})
 
 		this.store.dispatch(new ActionImpl(UsersActions.GET_USERS_INIT));
