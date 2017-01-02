@@ -1,5 +1,10 @@
 <ul class="topnav">
 	<li *ngFor="let route of routes">
 		<a routerLink="{{route.url}}" routerLinkActive="active">{{route.title}}</a>
+		<ul *ngIf="route.children" class="topnav">
+			<li *ngFor="let childRoute of route.children">
+				<a routerLink="{{childRoute.url}}" routerLinkActive="active">{{childRoute.title}}</a>
+			</li>
+		</ul>
 	</li>
 </ul>

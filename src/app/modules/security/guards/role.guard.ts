@@ -3,27 +3,32 @@ import { Router, CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot } from
 import { AuthModel } from './../state/auth.model';
 import { Store } from "@ngrx/store";
 import { Observable } from "rxjs";
+import { SitemapService } from "./../../../services/sitemap.service";
 
 @Injectable()
 export class RoleGuard implements CanActivate {
-	constructor(private router: Router, private store: Store<any>) { }
+	constructor(private router: Router, private store: Store<any>, private sitemap: SitemapService) { }
 
 	canActivate(route: ActivatedRouteSnapshot, routerState: RouterStateSnapshot) {
-		let roles = route.data["roles"] as Array<string>;
-		if (!roles)
-			return Observable.of(true);
+		let data = route.data;
+		if (data) {
+			let navData = data["navData"];
+			if (navData) {
+				let roles = navData.roles as Array<string>;
+				if (roles) {
+					return this.store.select("authState")
+						.skipWhile((x: AuthModel) => !x.isInitialized)
+						.map((user: AuthModel) => {
+							let hasRights = this.sitemap.userHasRights(roles, user.data.roles);
+							if (!hasRights)
+								this.router.navigate(['404']);
 
-		return this.store.select("authState")
-			.skipWhile((x: AuthModel) => !x.isInitialized)
-			.map((user: AuthModel) => {
-				for (let role of user.data.roles) {
-					if (roles.indexOf(role) !== -1) {
-						return true;
-					}
+							return hasRights;
+						}).first();
 				}
+			}
+		}
 
-				this.router.navigate(['404']);
-				return false;
-			}).first();
+		return Observable.of(true);
 	}
 }

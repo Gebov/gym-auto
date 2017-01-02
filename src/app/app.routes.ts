@@ -10,8 +10,21 @@ export const ROUTES: Routes = [
 	{
 		path: '', component: NavHeaderComponent, canActivate: [AuthGuard], children: [
 			{ path: '', redirectTo: '/home', pathMatch: 'full' },
-			{ path: 'home', component: HomeComponent },
-			{ path: 'admin', children: ADMIN_ROUTES, canActivate: [RoleGuard], data: { roles: ["Administrator"] } },
+			{
+				path: 'home', component: HomeComponent, data: {
+					navData: {
+						title: 'Home'
+					}
+				}
+			},
+			{
+				path: 'admin', children: ADMIN_ROUTES, canActivate: [RoleGuard], data: {
+					navData: {
+						title: 'Administration',
+						roles: ["Administrator"]
+					}
+				}
+			},
 		]
 	},
 	{ path: '**', component: NoContentComponent }
