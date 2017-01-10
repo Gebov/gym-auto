@@ -1,6 +1,6 @@
 import { ServerCollection } from "./../../../../../data/model";
 import { CardType } from "./model";
-import { tassign } from "./../../../../../state";
+import { tassign, addItem } from "./../../../../../state";
 import { Action } from '@ngrx/store';
 import { Actions } from "./actions";
 
@@ -14,15 +14,7 @@ export const cardTypesReducer = (state: ServerCollection<CardType> = cardTypesSt
 		case Actions.GET_CARD_TYPES_END:
 			return tassign(state, action.payload);
 		case Actions.ARCHIVE_CARD_TYPE_END:
-			let updateIndex = state.data.findIndex((cardType) => {
-				return cardType.id == action.payload.id;
-			});
-
-			if (updateIndex != -1) {
-				let toUpdate = state.data[updateIndex];
-				toUpdate = Object.assign(toUpdate, action.payload);
-				return tassign(state);
-			}
+			return addItem<CardType>(state, action.payload, "id");
 		case Actions.CREATE_CARD_TYPES_END:
 			let modifiedData = [].concat(state.data);
 			modifiedData.push(action.payload);
