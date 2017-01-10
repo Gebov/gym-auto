@@ -1,0 +1,43 @@
+<div>
+	<button (click)="onVisible(true)">Add</button>
+	<div *ngIf="visible">
+		<table>
+			<tbody>
+				<tr>
+					<td>
+						<label>Title</label>
+					</td>
+					<td>
+						<input type="text" placeholder="Title" [(ngModel)]="cardType.title" />
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<label>Visits count</label>
+					</td>
+					<td>
+						<input type="number" placeholder="Visits count" [(ngModel)]="cardType.visitCount" min="1" />
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<label>Validity</label>
+					</td>
+					<td>
+						<input type="number" placeholder="Validity" [(ngModel)]="cardType.validity" min="1" />
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<label>Price</label>
+					</td>
+					<td>
+						<input type="number" placeholder="Validity" [(ngModel)]="cardType.price" min="0" />
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<button (click)="onVisible(false)">Cancel</button>
+		<button (click)="onDone()">Done</button>
+	</div>
+</div>

@@ -36,6 +36,17 @@ class Effects {
 				return Observable.of(new ActionImpl(CardTypesActions.ARCHIVE_CARD_TYPE_END, {}));
 			})
 		);
+
+	@Effect() create$ = this.update$
+		.ofType(CardTypesActions.CREATE_CARD_TYPES_INIT)
+		.switchMap(x =>
+			this.svc.create(x.payload).map((data) => {
+				return new ActionImpl(CardTypesActions.CREATE_CARD_TYPES_END, data);
+			})
+			.catch((err, observable) => {
+				return Observable.of(new ActionImpl(CardTypesActions.CREATE_CARD_TYPES_END, {}));
+			})
+		);
 }
 
 export const EFFECTS_MODULE = EffectsModule.run(Effects);

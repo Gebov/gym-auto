@@ -19,9 +19,15 @@ export class CardTypesService {
 			.map(x => <ServerCollection<CardType>>x.json());
 	}
 
+	public create(cardType: CardType): Observable<CardType> {
+		let url = this.getUrl();
+		return this.http.post(url, cardType)
+			.map(x => x.json());
+	}
+
 	public archive(cardType: CardType): Observable<CardType> {
 		let url = this.getUrl(cardType.id);
-		return  this.http.patch(url, { archived: cardType.archived })
+		return this.http.patch(url, { archived: cardType.archived })
 			.map(x => cardType);
 	}
 

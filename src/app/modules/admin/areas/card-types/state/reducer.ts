@@ -23,6 +23,11 @@ export const cardTypesReducer = (state: ServerCollection<CardType> = cardTypesSt
 				toUpdate = Object.assign(toUpdate, action.payload);
 				return tassign(state);
 			}
+		case Actions.CREATE_CARD_TYPES_END:
+			let modifiedData = [].concat(state.data);
+			modifiedData.push(action.payload);
+
+			return tassign(state, { data: modifiedData, totalCount: ++state.totalCount });
 	}
 
 	return state;
