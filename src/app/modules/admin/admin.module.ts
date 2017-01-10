@@ -1,15 +1,11 @@
 import { NgModule, ApplicationRef } from '@angular/core';
 import { HttpModule } from "@angular/http";
 import { CommonModule } from '@angular/common';
-
 import { EffectsModule } from '@ngrx/effects';
-
+import { FormsModule } from "@angular/forms";
 // import { AdminRoutingModule } from "./admin-routing.module";
 
-import { COMPONENTS } from "./areas";
-
-import { EFFECTS } from "./areas";
-import { PROVIDERS } from "./areas";
+import { COMPONENTS, EFFECTS, PROVIDERS } from "./areas";
 
 @NgModule({
 	declarations: [
@@ -18,6 +14,7 @@ import { PROVIDERS } from "./areas";
 	imports: [
 		CommonModule,
 		HttpModule,
+		FormsModule,
 		// AdminRoutingModule,
 		...EFFECTS
 	],

@@ -1,10 +1,12 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { Store } from "@ngrx/store";
+import { Observable } from "rxjs";
+
 import { ActionImpl } from "./../../../../../../state/action.impl";
 import { UsersActions } from "./../../state/users.actions";
-import { ServerCollection, UserData } from "../../state/users.model";
-import { Observable } from "rxjs";
+import { UserData } from "../../state/users.model";
+import { ServerCollection } from "./../../../../../../data/server-collection";
 import { AuthModel } from "./../../state/users.model";
 import { EditUserComponent } from "../edit-user";
 

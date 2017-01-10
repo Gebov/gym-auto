@@ -13,11 +13,6 @@ export interface UserData {
 	roles: Array<string>
 }
 
-export interface ServerCollection<T> {
-	data: Array<T>,
-	totalCount: number
-}
-
 export interface EditedUser {
 	isBusy: boolean,
 	errors: Array<any>,

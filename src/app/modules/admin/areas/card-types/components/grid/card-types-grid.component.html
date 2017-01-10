@@ -1,0 +1,41 @@
+<table>
+	<thead>
+		<tr>
+			<th>
+				Title
+			</th>
+			<th>
+				Visit count
+			</th>
+			<th>
+				Validity
+			</th>
+			<th>
+				Price
+			</th>
+			<th>
+				Actions
+			</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr *ngFor="let cardType of cardTypes$ | async">
+			<td>
+				{{cardType.title}}
+			</td>
+			<td>
+				{{cardType.visitCount}}
+			</td>
+			<td>
+				{{cardType.validity}}
+			</td>
+			<td>
+				{{cardType.price}}
+			</td>
+			<td>
+				{{cardType.archived}}
+				<button (click)="onArchive(cardType)">Archive</button>
+			</td>
+		</tr>
+	</tbody>
+</table>
