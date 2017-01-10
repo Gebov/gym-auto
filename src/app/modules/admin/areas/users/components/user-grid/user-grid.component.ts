@@ -6,7 +6,7 @@ import { Observable } from "rxjs";
 import { ActionImpl } from "./../../../../../../state/action.impl";
 import { UsersActions } from "./../../state/users.actions";
 import { UserData } from "../../state/users.model";
-import { ServerCollection } from "./../../../../../../data/server-collection";
+import { ServerCollection } from "./../../../../../../data/model";
 import { AuthModel } from "./../../state/users.model";
 import { EditUserComponent } from "../edit-user";
 

@@ -1,4 +1,4 @@
-import { ServerCollection } from "./../../../../../data/server-collection";
+import { ServerCollection } from "./../../../../../data/model";
 import { CardType } from "./model";
 import { tassign } from "./../../../../../state";
 import { Action } from '@ngrx/store';

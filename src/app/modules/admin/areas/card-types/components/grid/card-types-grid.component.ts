@@ -4,7 +4,7 @@ import { Store } from "@ngrx/store";
 import { Observable } from "rxjs";
 
 import { CardType } from "./../../state/model";
-import { ServerCollection } from "./../../../../../../data/server-collection";
+import { ServerCollection } from "./../../../../../../data/model";
 import { Actions } from "./../../state/actions";
 import { ActionImpl } from "./../../../../../../state/action.impl";
 

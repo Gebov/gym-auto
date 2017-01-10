@@ -19,7 +19,7 @@ class Effects {
 
 	@Effect() getUsers$ = this.update$
 		.ofType(CardTypesActions.GET_CARD_TYPES_INIT)
-		.switchMap(x => this.svc.cardTypes()
+		.switchMap(x => this.svc.get()
 			.map((data) => {
 				return new ActionImpl(CardTypesActions.GET_CARD_TYPES_END, data);
 			})
@@ -29,7 +29,7 @@ class Effects {
 	@Effect() archive$ = this.update$
 		.ofType(CardTypesActions.ARCHIVE_CARD_TYPE_INIT)
 		.switchMap(x =>
-			this.svc.archive(x.payload).map((data) => {
+			this.svc.update(x.payload).map((data) => {
 				return new ActionImpl(CardTypesActions.ARCHIVE_CARD_TYPE_END, data);
 			})
 			.catch((err, observable) => {

@@ -1,4 +1,3 @@
-
 // TODO: this duplicates with auth model
 export interface AuthModel {
 	isLoggedIn: boolean;
@@ -7,10 +6,10 @@ export interface AuthModel {
 	data: UserData
 }
 
-export interface UserData {
-	email: string,
-	username: string,
-	roles: Array<string>
+export interface UserData  {
+	email: string;
+	username: string;
+	roles: Array<string>;
 }
 
 export interface EditedUser {

@@ -4,7 +4,7 @@ import { Store } from "@ngrx/store";
 import { ActionImpl } from "./../../../../../../state/action.impl";
 import { UsersActions } from "./../../state/users.actions";
 import { UserData, EditedUser } from "../../state/users.model";
-import { ServerCollection } from "./../../../../../../data/server-collection";
+import { ServerCollection } from "./../../../../../../data/model";
 import { Observable, Subject, ReplaySubject } from "rxjs";
 
 @Component({
