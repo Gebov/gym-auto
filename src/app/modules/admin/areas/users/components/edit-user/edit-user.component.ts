@@ -3,7 +3,8 @@ import { Router } from '@angular/router';
 import { Store } from "@ngrx/store";
 import { ActionImpl } from "./../../../../../../state/action.impl";
 import { UsersActions } from "./../../state/users.actions";
-import { ServerCollection, UserData, EditedUser } from "../../state/users.model";
+import { UserData, EditedUser } from "../../state/users.model";
+import { ServerCollection } from "./../../../../../../data/model";
 import { Observable, Subject, ReplaySubject } from "rxjs";
 
 @Component({

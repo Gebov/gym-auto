@@ -1,3 +1,3 @@
 export * from "./reducers";
-export * from "./tassign";
+export * from "./reducer-funcs";
 export * from "./action.impl";

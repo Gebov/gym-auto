@@ -1,5 +1,6 @@
-import { ServerCollection, UserData, EditedUser } from "./users.model";
-import { tassign } from "./../../../../../state";
+import { ServerCollection } from "./../../../../../data/model";
+import { UserData, EditedUser } from "./users.model";
+import { tassign, addItem, deleteItem } from "./../../../../../state";
 import { Action } from '@ngrx/store';
 import { UsersActions } from "./users.actions";
 
@@ -13,26 +14,9 @@ export const usersReducer = (state: ServerCollection<UserData> = defaultUsersSta
 		case UsersActions.GET_USERS_END:
 			return tassign(state, action.payload);
 		case UsersActions.DELETE_USER_END:
-			let deleteIndex = state.data.findIndex((user) => {
-				return user.email == action.payload.email;
-			});
-			if (deleteIndex !== -1) {
-				state.data.splice(deleteIndex, 1);
-				return tassign(state);
-			}
-			return state;
+			return deleteItem<UserData>(state, action.payload, "email");
 		case UsersActions.UPDATE_USER_END:
-			let updateIndex = state.data.findIndex((user) => {
-				return user.email == action.payload.email;
-			});
-
-			if (updateIndex != -1) {
-				let toUpdate = state.data[updateIndex];
-				toUpdate = Object.assign(toUpdate, action.payload);
-				return tassign(state);
-			}
-
-			return state;
+			return addItem<UserData>(state, action.payload, "email");
 		default:
 			return state;
 	}

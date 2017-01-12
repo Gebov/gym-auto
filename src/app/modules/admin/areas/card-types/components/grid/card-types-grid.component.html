@@ -1,0 +1,19 @@
+<gym-grid [data]="cardTypes$ | async">
+	<template gymColumnTemplate let-cardType="context" title="Test">
+		{{cardType.title}}
+	</template>
+	<template gymColumnTemplate let-cardType="context" title="Visit count">
+		{{cardType.visitCount}}
+	</template>
+	<template gymColumnTemplate let-cardType="context" title="Visit count">
+		{{cardType.validity}}
+	</template>
+	<template gymColumnTemplate let-cardType="context" title="Price">
+		{{cardType.price}}
+	</template>
+	<template gymColumnTemplate let-cardType="context" title="Actions">
+		{{cardType.archived}}
+		<button (click)="onArchive(cardType)">Archive</button>
+	</template>
+</gym-grid>
+<gym-card-type-create></gym-card-type-create>

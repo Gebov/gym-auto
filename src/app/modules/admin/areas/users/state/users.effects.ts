@@ -19,7 +19,7 @@ class UsersEffects {
 
 	@Effect() getUsers$ = this.update$
 		.ofType(UsersActions.GET_USERS_INIT)
-		.switchMap(x => this.usersSvc.users()
+		.switchMap(x => this.usersSvc.get()
 			.map((data) => {
 				return new ActionImpl(UsersActions.GET_USERS_END, data);
 			})
@@ -28,7 +28,7 @@ class UsersEffects {
 
 	@Effect() deleteUser$ = this.update$
 		.ofType(UsersActions.DELETE_USER_INIT)
-		.switchMap(x => this.usersSvc.deleteUser(x.payload)
+		.switchMap(x => this.usersSvc.delete(x.payload)
 			.map((data) => {
 				return new ActionImpl(UsersActions.DELETE_USER_END, data);
 			})
@@ -37,7 +37,7 @@ class UsersEffects {
 
 	@Effect() updateUser$ = this.update$
 		.ofType(UsersActions.UPDATE_USER_INIT)
-		.switchMap(x => this.usersSvc.updateUser(x.payload)
+		.switchMap(x => this.usersSvc.update(x.payload)
 			.map((data) => {
 				return new ActionImpl(UsersActions.UPDATE_USER_END, data);
 			})

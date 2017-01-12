@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
-import { UserData } from "./../state/users.model";
+
+import { CardType } from "./../state/model";
 import { CrudService } from "./../../../../../services/crud.service";
 
 @Injectable()
-export class UsersService extends CrudService<UserData> {
+export class CardTypesService extends CrudService<CardType> {
 	constructor(http: Http) {
-		super("users", "email", http);
+		super("cardtypes", "id", http);
 	}
 }
