@@ -1,0 +1,18 @@
+<div>
+	<table>
+		<thead>
+			<tr>
+				<th *ngFor="let colDef of columnDefinitions">
+					{{colDef.title}}
+				</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr *ngFor="let dataItem of data">
+				<td *ngFor="let colDef of columnDefinitions">
+					<template [gymCellTemplate]="{ template: colDef.template, dataItem: dataItem}"></template>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>

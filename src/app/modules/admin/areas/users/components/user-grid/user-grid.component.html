@@ -1,38 +1,18 @@
-<table>
-	<thead>
-		<tr>
-			<th>
-				email
-			</th>
-			<th>
-				username
-			</th>
-			<th>
-				roles
-			</th>
-			<th>
-				Actions
-			</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr *ngFor="let user of users$ | async">
-			<td>
-				{{user.email}}
-			</td>
-			<td>
-				{{user.username}}
-			</td>
-			<td>
-				<div *ngFor="let role of user.roles">{{role}}</div>
-			</td>
-			<td>
-				<button (click)="onEdit(user)">Edit</button>
-				<button (click)="onDelete(user)">Delete</button>
-			</td>
-		</tr>
-	</tbody>
-</table>
+<gym-grid [data]="users$ | async">
+	<template gymColumnTemplate let-user="context" title="Email">
+		{{user.email}}
+	</template>
+	<template gymColumnTemplate let-user="context" title="Username">
+		{{user.username}}
+	</template>
+	<template gymColumnTemplate let-user="context" title="Roles">
+		<div *ngFor="let role of user.roles">{{role}}</div>
+	</template>
+	<template gymColumnTemplate let-user="context" title="Actions">
+		<button (click)="onEdit(user)">Edit</button>
+		<button (click)="onDelete(user)">Delete</button>
+	</template>
+</gym-grid>
 
 <gym-edit-user *ngIf="editedUser$ | async" [userData]="editedUser$ | async">
 </gym-edit-user>

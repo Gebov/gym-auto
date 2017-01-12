@@ -1,42 +1,19 @@
-<table>
-	<thead>
-		<tr>
-			<th>
-				Title
-			</th>
-			<th>
-				Visit count
-			</th>
-			<th>
-				Validity
-			</th>
-			<th>
-				Price
-			</th>
-			<th>
-				Actions
-			</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr *ngFor="let cardType of cardTypes$ | async">
-			<td>
-				{{cardType.title}}
-			</td>
-			<td>
-				{{cardType.visitCount}}
-			</td>
-			<td>
-				{{cardType.validity}}
-			</td>
-			<td>
-				{{cardType.price}}
-			</td>
-			<td>
-				{{cardType.archived}}
-				<button (click)="onArchive(cardType)">Archive</button>
-			</td>
-		</tr>
-	</tbody>
-</table>
+<gym-grid [data]="cardTypes$ | async">
+	<template gymColumnTemplate let-cardType="context" title="Test">
+		{{cardType.title}}
+	</template>
+	<template gymColumnTemplate let-cardType="context" title="Visit count">
+		{{cardType.visitCount}}
+	</template>
+	<template gymColumnTemplate let-cardType="context" title="Visit count">
+		{{cardType.validity}}
+	</template>
+	<template gymColumnTemplate let-cardType="context" title="Price">
+		{{cardType.price}}
+	</template>
+	<template gymColumnTemplate let-cardType="context" title="Actions">
+		{{cardType.archived}}
+		<button (click)="onArchive(cardType)">Archive</button>
+	</template>
+</gym-grid>
 <gym-card-type-create></gym-card-type-create>
