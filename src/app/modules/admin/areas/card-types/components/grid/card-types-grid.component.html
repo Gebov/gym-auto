@@ -14,6 +14,7 @@
 	<template gymColumnTemplate let-cardType="context" title="Actions">
 		{{cardType.archived}}
 		<button (click)="onArchive(cardType)">Archive</button>
+		<button [disabled]="cardType.hasCards" (click)="onDelete(cardType)">Delete</button>
 	</template>
 </gym-grid>
 <gym-card-type-create></gym-card-type-create>

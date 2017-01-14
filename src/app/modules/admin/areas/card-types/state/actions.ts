@@ -10,4 +10,7 @@ export class Actions {
 
 	public static ARCHIVE_CARD_TYPE_INIT = "[Products/CardTypes] Archive init";
 	public static ARCHIVE_CARD_TYPE_END = "[Products/CardTypes] Archive end";
+
+	public static DELETE_CARD_TYPE_INIT = "[Products/CardTypes] Delete init";
+	public static DELETE_CARD_TYPE_END = "[Products/CardTypes] Delete end";
 }

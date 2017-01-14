@@ -37,6 +37,17 @@ class Effects {
 			})
 		);
 
+	@Effect() delete$ = this.update$
+		.ofType(CardTypesActions.DELETE_CARD_TYPE_INIT)
+		.switchMap(x =>
+			this.svc.delete(x.payload).map((data) => {
+				return new ActionImpl(CardTypesActions.DELETE_CARD_TYPE_END, data);
+			})
+			.catch((err, observable) => {
+				return Observable.of(new ActionImpl(CardTypesActions.DELETE_CARD_TYPE_END, {}));
+			})
+		);
+
 	@Effect() create$ = this.update$
 		.ofType(CardTypesActions.CREATE_CARD_TYPES_INIT)
 		.switchMap(x =>

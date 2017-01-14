@@ -32,4 +32,8 @@ export class CardTypesComponent {
 			archived: !cardType.archived
 		}));
 	}
+
+	onDelete(cardType: CardType): void {
+		this.store.dispatch(new ActionImpl(Actions.DELETE_CARD_TYPE_INIT, cardType));
+	}
 }

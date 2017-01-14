@@ -1,0 +1,24 @@
+<button (click)="onVisible(true)">Add</button>
+<div [hidden]="!visible">
+	<form [formGroup]="group">
+		<table>
+			<tbody>
+				<tr *ngFor="let field of data.fields">
+					<td>
+						<label>{{field.title}}</label>
+					</td>
+					<td>
+						<input *ngIf="field.type == 2" type="text" placeholder="{{field.title}}" formControlName="{{field.name}}" value="{{field.value || field.defaultValue}}" />
+						<input *ngIf="field.type == 1" type="number" placeholder="{{field.title}}" formControlName="{{field.name}}" value="{{field.value || field.defaultValue}}" min="{{field.validation.min}}" />
+
+						<div *ngIf="group.controls[field.name].errors && !group.controls[field.name].pristine && group.controls[field.name].errors.required"> {{field.title}} is required</div>
+						<div *ngIf="group.controls[field.name].errors && !group.controls[field.name].pristine && group.controls[field.name].errors.min"> Minumum value is {{field.validation.min}}</div>
+						<div *ngIf="group.controls[field.name].errors && !group.controls[field.name].pristine && group.controls[field.name].errors.minlength"> Minumum length is {{field.validation.minLength}}</div>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</form>
+	<button (click)="onVisible(false)">Cancel</button>
+	<button [disabled]="!group.valid" (click)="onDone()">Done</button>
+</div>

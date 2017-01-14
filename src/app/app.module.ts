@@ -13,7 +13,7 @@ import { HTTP_PROVIDER_OVERRIDES } from "./data/index";
 import { ROUTES } from './app.routes';
 import { COMPONENTS, APP_COMPONENT } from "./components";
 import { AppSettings } from './data';
-import { VALIDATORS } from "./forms/index";
+import { VALIDATORS } from "./forms";
 import { AuthEffects } from "./modules/security/state/auth.effects";
 
 import { SERVICES } from "./services";
