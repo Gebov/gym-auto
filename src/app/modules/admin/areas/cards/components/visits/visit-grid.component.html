@@ -1,0 +1,12 @@
+<div *ngIf="(visits$ | async)?.length > 0">
+	<gym-grid [data]="visits$ | async">
+		<template gymColumnTemplate let-visit="context" title="Date">
+			{{visit.dateCreated}}
+		</template>
+		<template gymColumnTemplate let-visit="context" title="Actions">
+			<button [gymRole]="'Administrator'" (click)="onDelete(visit)">Delete</button>
+		</template>
+	</gym-grid>
+	<button (click)="onHideVisits()">Hide visits</button>
+</div>
+

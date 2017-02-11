@@ -9,6 +9,7 @@ import { CustomValidators } from "./../../../../forms/custom.validator-funcs";
 })
 export class CreateComponent implements OnInit {
 	@Input() data: IItemMetaData;
+	@Input() isEdit: boolean;
 	@Output() done = new EventEmitter();
 	visible: boolean;
 
@@ -19,22 +20,26 @@ export class CreateComponent implements OnInit {
 
 		let controlsConfig = {};
 		this.data.fields.forEach(x => {
-			let validators: Array<ValidatorFn> = [];
-			if (x.type == FieldType.Number) {
-				let validation = <INumberValidation>x.validation;
-				if (validation.min) {
-					validators.push(CustomValidators.min(validation.min));
-				}
-			} else if (x.type == FieldType.Text) {
-				let validation = <ITextValidation>x.validation;
-				if (validation.minLength) {
-					validators.push(Validators.minLength(validation.minLength));
-				}
-			}
-
 			let validation = <IValidation>x.validation;
-			if (validation.required) {
-				validators.push(Validators.required);
+			let validators: Array<ValidatorFn> = [];
+
+			if (validation) {
+				if (x.type == FieldType.Number) {
+					let validation = <INumberValidation>x.validation;
+					if (validation.min) {
+						validators.push(CustomValidators.min(validation.min));
+					}
+				} else if (x.type == FieldType.Text) {
+					let validation = <ITextValidation>x.validation;
+					if (validation.minLength) {
+						validators.push(Validators.minLength(validation.minLength));
+					}
+				}
+
+				let validation = <IValidation>x.validation;
+				if (validation.required) {
+					validators.push(Validators.required);
+				}
 			}
 
 			controlsConfig[x.name] = new FormControl(null, validators);
@@ -84,11 +89,14 @@ interface IFieldMetaData {
 	type: FieldType;
 	validation?: IValidation | INumberValidation | ITextValidation;
 	defaultValue?: any;
+	value?: any;
 }
 
 export enum FieldType {
 	Number = 1,
-	Text = 2
+	Text = 2,
+	Boolean = 3,
+	Dropdown = 4
 }
 
 export interface IValidation {
@@ -104,6 +112,3 @@ export interface ITextValidation extends IValidation {
 	minLength?: number;
 	maxLength?: number;
 }
-
-
-

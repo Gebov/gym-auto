@@ -8,6 +8,7 @@
 						<label>{{field.title}}</label>
 					</td>
 					<td>
+						<input *ngIf="field.type == 3" type="checkbox" formControlName="{{field.name}}" [checked]="field.value || field.defaultValue" />
 						<input *ngIf="field.type == 2" type="text" placeholder="{{field.title}}" formControlName="{{field.name}}" value="{{field.value || field.defaultValue}}" />
 						<input *ngIf="field.type == 1" type="number" placeholder="{{field.title}}" formControlName="{{field.name}}" value="{{field.value || field.defaultValue}}" min="{{field.validation.min}}" />
 

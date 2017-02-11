@@ -1,11 +1,11 @@
 <gym-grid [data]="cardTypes$ | async">
-	<template gymColumnTemplate let-cardType="context" title="Test">
+	<template gymColumnTemplate let-cardType="context" title="Title">
 		{{cardType.title}}
 	</template>
 	<template gymColumnTemplate let-cardType="context" title="Visit count">
 		{{cardType.visitCount}}
 	</template>
-	<template gymColumnTemplate let-cardType="context" title="Visit count">
+	<template gymColumnTemplate let-cardType="context" title="Validity">
 		{{cardType.validity}}
 	</template>
 	<template gymColumnTemplate let-cardType="context" title="Price">

@@ -4,9 +4,9 @@ import { Routes } from '@angular/router';
 export const ROUTES: Routes = [
 	{ path: '', component: CardTypesComponent },
 	{
-		path: 'cardTypes', component: CardTypesComponent, data: {
+		path: 'card-templates', component: CardTypesComponent, data: {
 			navData: {
-				title: 'Card Types'
+				title: 'Card Templates'
 			}
 		}
 	}
