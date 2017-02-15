@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Store } from "@ngrx/store";
 import { ActionImpl } from "./../../../../state/action.impl";
@@ -7,7 +7,8 @@ import { AuthService } from "./../../services/auth.service";
 
 @Component({
 	selector: 'gym-login',
-	templateUrl: './login.component.html'
+	templateUrl: './login.component.html',
+	styleUrls: ["./login.component.css"]
 })
 export class LoginComponent implements OnInit {
 	private message: string;

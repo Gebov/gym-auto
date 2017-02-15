@@ -1,25 +1,24 @@
-<form (ngSubmit)="register()" #f="ngForm" novalidate class="form">
-    <h1>Register</h1>
-    <p>
-        <label for="email">Email</label>
+<form (ngSubmit)="register()" #f="ngForm" novalidate>
+    <h2>Register</h2>
+    <div class="container">
+        <label for="email"><b>Email</b></label>
         <input #email="ngModel"  [(ngModel)]="user.email" type="email" name="email" placeholder="yourname@email.com" pattern="^[a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,15})$" required />
 		<small [hidden]="email.valid || (email.pristine && !f.submitted)"> A valid email is required </small>
-    </p>
-    <p>
-        <label for="password">Password</label>
-        <input #password="ngModel" [(ngModel)]="user.password" type="password" name="password" placeholder="password" validateEqual="password" required />
+
+        <label for="password"><b>Password</b></label>
+        <input #password="ngModel" [(ngModel)]="user.password" type="password" name="password" placeholder="Password" validateEqual="password" required />
 		<small [hidden]="password.valid || (password.pristine && !f.submitted)"> Password is required </small>
-    </p>
-	<p>
-        <label for="confirmPassword">Confirm Password</label>
-        <input #confirmPassword="ngModel" [(ngModel)]="user.confirmPassword" type="password" name="confirmPassword" placeholder="confirm password" validateEqual="password" reverse=”true” required />
+
+        <label for="confirmPassword"><b>Confirm Password</b></label>
+        <input #confirmPassword="ngModel" [(ngModel)]="user.confirmPassword" type="password" name="password" placeholder="Confirm Password" validateEqual="password" reverse=”true” required />
 		<small [hidden]="confirmPassword.valid || (confirmPassword.pristine && !f.submitted)"> Confirm password and password must match </small>
-    </p>
-	<p>
-        <label for="username">Username</label>
-        <input #username="ngModel" [(ngModel)]="user.username" type="text" name="username" placeholder="username" required />
+
+        <label for="username"><b>Username</b></label>
+        <input #username="ngModel" [(ngModel)]="user.username" type="text" name="username" placeholder="Username" required />
 		<small [hidden]="username.valid || (username.pristine && !f.submitted)"> Username is required </small>
-    </p>
-    <p><button type="submit" [disabled]="!f.valid">Submit</button></p>
-	<a routerLink="/login">back</a>
+    </div>
+	<div class="container">
+		<button type="submit" [disabled]="!f.valid">Submit</button>
+		<a routerLink="/login">Back</a>
+	</div>
 </form>
