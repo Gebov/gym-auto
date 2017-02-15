@@ -6,7 +6,8 @@ import { AuthActions } from "./../../state/auth.actions";
 
 @Component({
 	selector: 'gym-register',
-	templateUrl: './register.component.html'
+	templateUrl: './register.component.html',
+	styleUrls: ["./register.component.css"]
 })
 export class RegisterComponent {
 	private user: any;

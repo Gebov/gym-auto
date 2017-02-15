@@ -1,18 +1,19 @@
 <form (submit)="login(email.value, password.value, !!isPersistent.value)" class="form">
-    <h1>Login</h1>
+    <h2>Login</h2>
 	<div *ngIf="message">{{message}}</div>
-    <p>
-        <label for="email">Email</label>
-        <input #email type="email" name="email" placeholder="yourname@email.com" required />
-    </p>
-    <p>
-        <label for="password">Password</label>
-        <input #password type="password" name="password" placeholder="password" required />
-    </p>
-	<p>
-        <label for="isPersistent">Keep me logged in</label>
-        <input #isPersistent type="checkbox" name="isPersistent" />
-    </p>
-    <p><button type="submit">Submit</button></p>
-	<small> Not registered? Register <a routerLink="/register">here</a></small>
+    <div class="container">
+        <label for="email"><b>Email</b></label>
+        <input #email type="email" id="email" name="email" placeholder="yourname@email.com" required />
+
+        <label for="password"><b>Password</b></label>
+        <input #password type="password" id="password" name="password" placeholder="password" required />
+
+		<input #isPersistent type="checkbox" id="isPersistent" name="isPersistent" />
+		<label for="isPersistent">Remember me</label>
+
+    </div>
+	<div class="container">
+		<button type="submit">Submit</button>
+		<small class="register"> Not registered? Register <a routerLink="/register">here</a></small>
+	</div>
 </form>

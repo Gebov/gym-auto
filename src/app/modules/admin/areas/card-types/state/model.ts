@@ -5,4 +5,5 @@ export interface CardType {
 	validity: number;
 	price: number;
 	archived: boolean;
+	hasCards: boolean;
 }

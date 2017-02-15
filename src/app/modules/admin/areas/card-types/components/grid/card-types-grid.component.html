@@ -1,11 +1,11 @@
 <gym-grid [data]="cardTypes$ | async">
-	<template gymColumnTemplate let-cardType="context" title="Test">
+	<template gymColumnTemplate let-cardType="context" title="Title">
 		{{cardType.title}}
 	</template>
 	<template gymColumnTemplate let-cardType="context" title="Visit count">
 		{{cardType.visitCount}}
 	</template>
-	<template gymColumnTemplate let-cardType="context" title="Visit count">
+	<template gymColumnTemplate let-cardType="context" title="Validity">
 		{{cardType.validity}}
 	</template>
 	<template gymColumnTemplate let-cardType="context" title="Price">
@@ -14,6 +14,7 @@
 	<template gymColumnTemplate let-cardType="context" title="Actions">
 		{{cardType.archived}}
 		<button (click)="onArchive(cardType)">Archive</button>
+		<button [disabled]="cardType.hasCards" (click)="onDelete(cardType)">Delete</button>
 	</template>
 </gym-grid>
 <gym-card-type-create></gym-card-type-create>

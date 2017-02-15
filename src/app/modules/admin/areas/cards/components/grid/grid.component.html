@@ -1,0 +1,20 @@
+<gym-grid [data]="cards$ | async">
+	<template gymColumnTemplate let-card="context" title="User">
+		{{card.user.title}}
+	</template>
+	<template gymColumnTemplate let-card="context" title="Paid">
+		{{card.paid}}
+	</template>
+	<template gymColumnTemplate let-card="context" title="Template">
+		{{card.template.title}}
+	</template>
+	<template gymColumnTemplate let-card="context" title="Price">
+		{{card.price}}
+	</template>
+	<template gymColumnTemplate let-card="context" title="Actions">
+		<button [gymRole]="'Administrator'" (click)="onEdit(card)">Edit</button>
+		<button [gymRole]="'Administrator'" (click)="onDelete(card)">Delete</button>
+		<button (click)="onShowVisits(card)">Show visits</button>
+	</template>
+</gym-grid>
+<gym-card-create></gym-card-create>
