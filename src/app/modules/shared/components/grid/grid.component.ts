@@ -3,7 +3,8 @@ import { ColumnDirective } from "./column.directive";
 
 @Component({
   selector: 'gym-grid',
-  templateUrl: './grid.component.html'
+  templateUrl: './grid.component.html',
+	styleUrls: ["./grid.component.css"]
 })
 export class GridComponent implements AfterContentInit {
 	@ContentChildren(ColumnDirective) columnDefinitions : QueryList<ColumnDirective>
