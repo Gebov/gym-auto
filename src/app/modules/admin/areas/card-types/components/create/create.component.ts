@@ -32,7 +32,7 @@ export class CreateComponent implements OnInit {
 				},
 				{
 					name: "visitCount",
-					title: "VisitsCount",
+					title: "Visits count",
 					type: FieldType.Number,
 					validation: {
 						min: 1

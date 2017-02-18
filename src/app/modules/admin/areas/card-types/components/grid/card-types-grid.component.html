@@ -12,7 +12,6 @@
 		{{cardType.price}}
 	</template>
 	<template gymColumnTemplate let-cardType="context" title="Actions">
-		{{cardType.archived}}
 		<button (click)="onArchive(cardType)">Archive</button>
 		<button [disabled]="cardType.hasCards" (click)="onDelete(cardType)">Delete</button>
 	</template>

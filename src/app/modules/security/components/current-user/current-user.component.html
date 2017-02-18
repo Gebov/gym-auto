@@ -1,2 +1,4 @@
-<div>{{userName$ | async}}</div>
-<div (click)="logout()">logout</div>
+<div class="container">
+	<div>Hello, {{userName$ | async}}</div>
+	<button (click)="logout()">Logout</button>
+</div>
